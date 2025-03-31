@@ -10,7 +10,7 @@ const MobileSwiper = () => {
   }
 
   return (
-    <Swiper items={pricing} className="h-[500px]">
+    <Swiper items={pricingData} className="h-[500px]">
       {pricingData.map((item, index) => (
         <div
           key={index}
