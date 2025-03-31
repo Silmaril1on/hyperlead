@@ -13,11 +13,13 @@ export default function RootLayout({ children }) {
   return (
     <StoreProvider>
       <html lang="en">
-        <body className="relative">
-          <Navigation />
-          {children}
-          <SideBar />
-          <Footer />
+        <body className="center flex-col">
+          <main className="relative w-full max-w-[1650px]">
+            <Navigation />
+            {children}
+            <SideBar />
+            <Footer />
+          </main>
         </body>
       </html>
     </StoreProvider>

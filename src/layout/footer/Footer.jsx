@@ -5,7 +5,7 @@ import FooterSubscribe from "./components/FooterSubscribe";
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col md:flex-row *:w-full px-3 lg:px-20 py-20 relative">
+    <footer className="flex w-full flex-col md:flex-row *:w-full px-3 lg:px-20 py-20 relative">
       <FooterSubscribe />
       <div>
         <FooterLinks />
