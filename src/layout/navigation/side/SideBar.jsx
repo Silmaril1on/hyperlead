@@ -11,7 +11,7 @@ const SideBar = () => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <FromLeft className="fixed top-0 inset-0 backdrop-blur-xl center flex-col space-y-10 border">
+        <FromLeft className="fixed top-0 inset-0 backdrop-blur-xl center flex-col space-y-10">
           <NavLinks />
           <RegistrationButtons />
         </FromLeft>
