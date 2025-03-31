@@ -1,0 +1,17 @@
+"use client";
+import { setToggle } from "@/features/modalSlice";
+import { useDispatch, useSelector } from "react-redux";
+
+export const useToggle = () => {
+  const dispatch = useDispatch();
+  const { isOpen } = useSelector((state) => state.modal);
+
+  const toggleState = () => {
+    dispatch(setToggle());
+  };
+
+  return {
+    isOpen,
+    toggle: toggleState,
+  };
+};
