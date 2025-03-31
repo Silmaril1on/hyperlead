@@ -7,6 +7,10 @@ import PricingTitle from "./components/PricingTitles";
 import PricingButton from "./components/PricingButton";
 
 const PricingList = () => {
+  if (!pricingData || !pricingData.length) {
+    return null;
+  }
+
   return (
     <motion.div
       variants={zoomOut}
