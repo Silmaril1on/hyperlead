@@ -51,6 +51,10 @@ export const zoomOut = {
       ease: "linear",
     },
   },
+  exit: {
+    scale: 0,
+    duration: 0.4,
+  },
 };
 
 export const slideTop = {

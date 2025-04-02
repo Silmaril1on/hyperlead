@@ -1,7 +1,7 @@
 import Logo from "@/components/Logo";
 import NavLinks from "./NavLinks";
 import SideButton from "./side/SideButton";
-import RegistrationButtons from "@/auth/regbuttons/RegistrationButtons";
+import RegistrationButtons from "@/components/RegistrationButtons";
 
 const Navigation = () => {
   return (

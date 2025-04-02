@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 
-export const useToggleLocal = () => {
-  const [isOpen, setIsOpen] = useState(null);
+export const useToggleLocal = (initialState = false) => {
+  const [isOpen, setIsOpen] = useState(initialState);
 
   const toggleState = (index) => {
     setIsOpen((prevIndex) => (prevIndex === index ? null : index));

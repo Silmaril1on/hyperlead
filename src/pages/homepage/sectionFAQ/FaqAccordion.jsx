@@ -1,7 +1,7 @@
 "use client";
 import { useToggleLocal } from "@/hooks/useToggleLocal";
 import { GoPlus } from "react-icons/go";
-import faq from "@/localDB/faqData";
+import faq from "@/lib/localDB/faqData";
 import Paragraph from "@/components/Paragraph";
 import SubTitle from "@/components/SubTitle";
 
@@ -39,7 +39,7 @@ const FaqAccordion = () => {
 
 const Accordion = ({ item }) => {
   return (
-    <div className="pl-10 py-3 ">
+    <div className="pl-10 pr-5 py-3 ">
       {item.a.split("\n\n").map((paragraph, index) => (
         <Paragraph className="mb-2" key={index}>
           {paragraph}

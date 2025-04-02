@@ -7,7 +7,7 @@ export const useToggle = () => {
   const { isOpen } = useSelector((state) => state.modal);
 
   const toggleState = () => {
-    dispatch(setToggle());
+    dispatch(setToggle(!isOpen));
   };
 
   return {

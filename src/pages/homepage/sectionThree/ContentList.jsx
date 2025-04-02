@@ -2,7 +2,7 @@
 import Title from "@/components/Title";
 import { motion } from "framer-motion";
 import { slideTop } from "@/animationvalues/motionVariants";
-import sectionThreedata from "@/localDB/sectionThreeData";
+import sectionThreedata from "@/lib/localDB/sectionThreeData";
 
 const ContentList = () => {
   return (
@@ -12,7 +12,7 @@ const ContentList = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="flex flex-col px-3 md:flex-row space-y-10 md:space-y-0 md:px-[12%] md:space-x-10 mt-10"
+        className="flex flex-col px-5 md:flex-row space-y-10 md:space-y-0 md:px-[12%] md:space-x-10 mt-10"
       >
         {sectionThreedata.map((item) => {
           return (

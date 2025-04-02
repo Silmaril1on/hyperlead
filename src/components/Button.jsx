@@ -1,4 +1,14 @@
-const Button = ({ children, onClick, className, icon, type }) => {
+import Spinner from "./Spinner";
+
+const Button = ({
+  children,
+  onClick,
+  className,
+  icon,
+  type,
+  loading,
+  text,
+}) => {
   return (
     <button
       onClick={onClick}
@@ -10,8 +20,17 @@ const Button = ({ children, onClick, className, icon, type }) => {
           : "bg-black hover:bg-black/80 text-white font-semibold"
       }  duration-300  cursor-pointer flex items-center space-x-2  rounded-3xl capitalize px-4 py-2`}
     >
-      {icon && { icon }}
-      {children}
+      {loading ? (
+        <div className="space-x-2 flex items-center">
+          <span>{text}</span>
+          <Spinner />
+        </div>
+      ) : (
+        <>
+          {icon && icon}
+          {children}
+        </>
+      )}
     </button>
   );
 };

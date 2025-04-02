@@ -1,8 +1,8 @@
 import "./globals.css";
-import { StoreProvider } from "@/store/StoreProvides";
 import Navigation from "../layout/navigation/Navigation";
 import SideBar from "@/layout/navigation/side/SideBar";
 import Footer from "@/layout/footer/Footer";
+import { StoreProvider } from "@/lib/store/StoreProvides";
 
 export const metadata = {
   title: "HyperLead",

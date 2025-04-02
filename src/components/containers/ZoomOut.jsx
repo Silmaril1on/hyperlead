@@ -7,6 +7,7 @@ const ZoomOut = ({ children, className }) => {
     <motion.div
       initial="hidden"
       whileInView="visible"
+      exit="exit"
       className={className}
       variants={zoomOut}
       viewport={{ once: true }}

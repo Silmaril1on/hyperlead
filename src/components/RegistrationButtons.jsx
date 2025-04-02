@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Button from "@/components/Button";
+import Link from "next/link";
 
 const RegistrationButtons = () => {
   return (
@@ -11,8 +12,12 @@ const RegistrationButtons = () => {
       viewport={{ once: true }}
       className="flex space-x-3"
     >
-      <Button type="secondary">Sign In</Button>
-      <Button>Sign Up</Button>
+      <Link href="/signin">
+        <Button type="secondary">Sign In</Button>
+      </Link>
+      <Link href="/signup">
+        <Button>Sign Up</Button>
+      </Link>
     </motion.div>
   );
 };
