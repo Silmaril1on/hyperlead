@@ -1,6 +1,6 @@
 "use client";
 import Title from "@/components/Title";
-import sectionTwoData from "@/lib/localDB/sectionTwoData";
+import sectionTwoData from "@/localDB/sectionTwoData";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { zoomOut } from "@/animationvalues/motionVariants";

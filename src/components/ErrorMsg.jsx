@@ -1,16 +1,19 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
 import { zoomOut } from "@/animationvalues/motionVariants";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { setError } from "@/features/modalSlice";
-import { useDispatch } from "react-redux";
 
-const ErrorMsg = ({ children, error }) => {
+const ErrorMsg = () => {
   const dispatch = useDispatch();
+  const error = useSelector((state) => state.modal.error);
+  const type = useSelector((state) => state.modal.type);
+  const toastRef = useRef(null);
 
   useEffect(() => {
     if (error) {
-      const timer = setTimeout(() => dispatch(setError("")), 4000);
+      const timer = setTimeout(() => dispatch(setError("")), 5000);
       return () => clearTimeout(timer);
     }
   }, [error]);
@@ -19,13 +22,26 @@ const ErrorMsg = ({ children, error }) => {
     <AnimatePresence>
       {error && (
         <motion.div
+          ref={toastRef}
           initial="hidden"
           whileInView="visible"
           exit="exit"
           variants={zoomOut}
-          className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl font-semibold"
+          className={`${
+            type === "success"
+              ? "bg-green-100 border border-green-400 text-green-700"
+              : "bg-red-100 border-2 border-red-400 text-red-700"
+          } px-8 fixed z-20 bottom-5 right-5 py-3  font-semibold`}
         >
-          {children}
+          {error}
+          <motion.div
+            initial={{ width: "100%" }}
+            animate={{ width: "0%" }}
+            transition={{ duration: 5, ease: "linear" }}
+            className={`absolute left-0 rounded-full -bottom-2 h-[2px] ${
+              type === "success" ? "bg-green-500" : "bg-red-400"
+            }`}
+          />
         </motion.div>
       )}
     </AnimatePresence>

@@ -2,9 +2,11 @@ import PwdStrengthCheck from "./PwdStrengthCheck";
 
 const Inputs = ({
   email,
+  userName,
   password,
   confirmPassword,
   setEmail,
+  setUserName,
   setConfirmPassword,
   setPassword,
 }) => {
@@ -13,14 +15,29 @@ const Inputs = ({
       <div>
         <label htmlFor="email">Email</label>
         <input
-          id="userEmail"
+          required
           type="email"
           name="email"
-          value={email}
-          placeholder="Your Email"
-          onChange={(e) => setEmail(e.target.value)}
-          required
+          id="userEmail"
           className="mt-1"
+          placeholder="Your Email"
+          autoComplete="false"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="name">Display Name</label>
+        <input
+          id="name"
+          type="text"
+          name="name"
+          className="mt-1"
+          placeholder="Display name"
+          autoComplete="false"
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
+          required
         />
       </div>
       <div>

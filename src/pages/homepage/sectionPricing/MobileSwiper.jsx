@@ -1,4 +1,4 @@
-import pricingData from "@/lib/localDB/pricingData";
+import pricingData from "@/localDB/pricingData";
 import PricingTitle from "./components/PricingTitles";
 import Benefits from "./components/Benefits";
 import PricingButton from "./components/PricingButton";

@@ -1,7 +1,7 @@
 "use client";
 import { useToggleLocal } from "@/hooks/useToggleLocal";
 import { GoPlus } from "react-icons/go";
-import faq from "@/lib/localDB/faqData";
+import faq from "@/localDB/faqData";
 import Paragraph from "@/components/Paragraph";
 import SubTitle from "@/components/SubTitle";
 

@@ -1,26 +1,33 @@
-import ZoomOut from "@/components/containers/ZoomOut";
+"use client";
+import { useSelector } from "react-redux";
 import Title from "@/components/Title";
 import SignInForm from "./SignInForm";
 import Paragraph from "@/components/Paragraph";
-import Link from "next/link";
+import ErrorMsg from "@/components/ErrorMsg";
+import LinkComponent from "@/components/buttons/LinkComponent";
+import FormContainer from "@/components/containers/FormContainer";
+import MotionContainer from "@/components/containers/MotionContainer";
 
 const SignInComponent = () => {
+  const { error } = useSelector((store) => store.modal);
   return (
-    <section className="flex-col z-20 relative h-screen  center bg-[#f8fafc]">
-      <div className="absolute inset-0 -z-1 bg-radial-[at_5%_25%] from-amber-100/60 from-5% via-sky-100/30 to-95% to-violet-100" />
-      <div className="primary-border center flex-col space-y-5 bg-white px-10 primary-outline">
-        <ZoomOut>
-          <Title>SIGN IN</Title>
-        </ZoomOut>
-        <SignInForm />
-        <div className="flex space-x-2">
-          <Paragraph>Dont have an account? </Paragraph>
-          <Link className="text-blue-600 hover:underline" href="/signup">
-            Sign Up
-          </Link>
-        </div>
+    <>
+      <ErrorMsg error={error}>{error}</ErrorMsg>
+      <div className="h-screen center w-full">
+        <FormContainer className="w-[90%] max-w-[400px]">
+          <MotionContainer animation="zoom-out">
+            <Title>SIGN IN</Title>
+          </MotionContainer>
+          <SignInForm />
+          <div className="flex space-x-2">
+            <Paragraph>Dont have an account? </Paragraph>
+            <LinkComponent type="blue" href="/signup">
+              Sign Up
+            </LinkComponent>
+          </div>
+        </FormContainer>
       </div>
-    </section>
+    </>
   );
 };
 

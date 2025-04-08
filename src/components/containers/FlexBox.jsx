@@ -1,0 +1,46 @@
+const FlexBox = ({ children, className, type, onClick }) => {
+  const getLayout = (animation) => {
+    switch (animation) {
+      case "row":
+        return "flex space-x-1 items-center";
+      case "row-2":
+        return "flex space-x-2 items-center";
+      case "row-3":
+        return "flex space-x-3 items-center";
+      case "row-5":
+        return "flex space-x-5 items-center";
+      case "row-end":
+        return "flex space-x-1 justify-end";
+      case "row-start":
+        return "flex space-x-1 justify-start";
+      case "row-center":
+        return "flex space-x-1 justify-center items-center";
+      case "row-between":
+        return "flex justify-between items-center";
+      case "column":
+        return "flex flex-col space-y-1 items-center";
+      case "column-1":
+        return "flex flex-col space-y-1 items-center";
+      case "column-2":
+        return "flex flex-col space-y-2 items-center";
+      case "column-3":
+        return "flex flex-col space-y-3 items-center";
+      case "column-5":
+        return "flex flex-col space-y-5 items-center";
+      case "column-start":
+        return "flex flex-col items-start";
+      case "column-end":
+        return "flex flex-col items-end";
+      default:
+        return "flex space-x-1 items-center justify-center";
+    }
+  };
+
+  return (
+    <div onClick={onClick} className={`${className} ${getLayout(type)}`}>
+      {children}
+    </div>
+  );
+};
+
+export default FlexBox;

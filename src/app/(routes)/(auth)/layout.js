@@ -1,0 +1,12 @@
+import GradientContainer from "@/components/containers/GradientContainer";
+
+const AuthLayout = ({ children }) => {
+  return (
+    <section className="flex-col z-20 relative center bg-[#f8fafc]">
+      <GradientContainer />
+      {children}
+    </section>
+  );
+};
+
+export default AuthLayout;

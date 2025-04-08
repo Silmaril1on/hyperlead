@@ -1,8 +1,8 @@
 "use client";
-import StaggerZoomOut from "@/components/containers/StaggerZoomOut";
-import ZoomOut from "@/components/containers/ZoomOut";
+import MotionChildren from "@/components/containers/MotionChildren";
+import MotionContainer from "@/components/containers/MotionContainer";
+import LinkComponent from "@/components/buttons/LinkComponent";
 import { setToggle } from "@/features/modalSlice";
-import Link from "next/link";
 import { useDispatch } from "react-redux";
 
 const navLinks = [
@@ -35,17 +35,24 @@ const NavLinks = () => {
     dispatch(setToggle(false));
   };
   return (
-    <ZoomOut className="flex flex-col items-center md:space-x-4 md:flex-row">
+    <MotionContainer
+      animation="zoom-out"
+      className="flex flex-col items-center md:space-x-4 md:flex-row"
+    >
       {navLinks.map((item) => {
         return (
-          <StaggerZoomOut onClick={handleClose} key={item.id}>
-            <Link href={item.link} className="link text-4xl md:text-base">
+          <MotionChildren
+            animation="zoom-out"
+            onClick={handleClose}
+            key={item.id}
+          >
+            <LinkComponent href={item.link} className="text-4xl md:text-base">
               {item.name}
-            </Link>
-          </StaggerZoomOut>
+            </LinkComponent>
+          </MotionChildren>
         );
       })}
-    </ZoomOut>
+    </MotionContainer>
   );
 };
 

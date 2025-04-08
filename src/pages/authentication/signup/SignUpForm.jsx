@@ -1,20 +1,22 @@
 "use client";
-import Button from "@/components/Button";
 import Inputs from "./Inputs";
-import { signUp } from "@/lib/auth/auth";
+import { signUp } from "@/lib/authActions/authActions";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { validateForm } from "./validateform";
+import { validateForm } from "../../../helpers/validateform";
 import { useDispatch } from "react-redux";
 import { setError } from "@/features/modalSlice";
+import { setUser, setLoading } from "@/features/userSlice";
+import FormButtons from "./FormButtons";
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLocalLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,18 +27,21 @@ const SignUpForm = () => {
       return;
     }
     try {
-      setLoading(true);
-      const { error, data } = await signUp({ email, password });
+      setLocalLoading(true);
+      dispatch(setLoading(true));
+      const { error, data } = await signUp({ email, password, userName });
       if (error) {
         dispatch(setError(error));
         return;
       }
+
+      dispatch(setUser(data.user));
       router.push("/");
-      console.log("created successfuly", data);
     } catch (err) {
       dispatch(setError("An unexpected error occurred. Please try again."));
     } finally {
-      setLoading(false);
+      setLocalLoading(false);
+      dispatch(setLoading(false));
     }
   };
 
@@ -44,20 +49,15 @@ const SignUpForm = () => {
     <form onSubmit={handleSubmit} className="space-y-4">
       <Inputs
         email={email}
+        userName={userName}
         password={password}
         confirmPassword={confirmPassword}
         setEmail={setEmail}
+        setUserName={setUserName}
         setPassword={setPassword}
         setConfirmPassword={setConfirmPassword}
       />
-      <Button
-        type="submit"
-        text="creating account"
-        loading={loading}
-        disabled={loading}
-      >
-        create account
-      </Button>
+      <FormButtons loading={loading} />
     </form>
   );
 };

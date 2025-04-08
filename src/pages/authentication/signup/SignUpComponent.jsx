@@ -1,33 +1,26 @@
-"use client";
 import Paragraph from "@/components/Paragraph";
 import Title from "@/components/Title";
-import Link from "next/link";
 import SignUpForm from "./SignUpForm";
-import ZoomOut from "@/components/containers/ZoomOut";
-import ErrorMsg from "@/components/ErrorMsg";
-import { useSelector } from "react-redux";
+import LinkComponent from "@/components/buttons/LinkComponent";
+import FormContainer from "@/components/containers/FormContainer";
+import MotionContainer from "@/components/containers/MotionContainer";
 
 const SignUpComponent = () => {
-  const { error } = useSelector((store) => store.modal);
   return (
-    <section className="flex-col z-20 relative h-screen center bg-[#f8fafc]">
-      <div className="absolute top-5 right-5">
-        <ErrorMsg error={error}>{error}</ErrorMsg>
-      </div>
-      <div className="absolute inset-0 -z-1 bg-radial-[at_5%_25%] from-amber-100/60 from-5% via-sky-100/30 to-95% to-violet-100" />
-      <div className="primary-border center flex-col space-y-5 bg-white px-10  primary-outline">
-        <ZoomOut>
+    <>
+      <FormContainer className="w-[90%] max-w-[400px]">
+        <MotionContainer animation="zoom-out">
           <Title>SIGN UP</Title>
-        </ZoomOut>
+        </MotionContainer>
         <SignUpForm />
         <div className="flex space-x-2">
           <Paragraph>Already have an account?</Paragraph>
-          <Link className="text-blue-600 hover:underline" href="/signin">
+          <LinkComponent type="blue" href="/signin">
             Login
-          </Link>
+          </LinkComponent>
         </div>
-      </div>
-    </section>
+      </FormContainer>
+    </>
   );
 };
 

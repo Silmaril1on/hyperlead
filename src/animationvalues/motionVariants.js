@@ -39,37 +39,6 @@ export const slideShow = {
   },
 };
 
-export const zoomOut = {
-  hidden: {
-    scale: 0,
-  },
-  visible: {
-    scale: 1,
-    transition: {
-      staggerChildren: 0.3,
-      delayChildren: 0.1,
-      ease: "linear",
-    },
-  },
-  exit: {
-    scale: 0,
-    duration: 0.4,
-  },
-};
-
-export const slideTop = {
-  hidden: {
-    y: 100,
-  },
-  visible: {
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: "easeInOut",
-    },
-  },
-};
-
 export const slideLeft = {
   hidden: {
     x: "100%",
@@ -77,12 +46,99 @@ export const slideLeft = {
   visible: {
     x: 0,
     transition: {
-      duration: 0.5,
+      duration: 0.4,
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
       ease: "linear",
     },
   },
   exit: {
     x: "100%",
+    transition: {
+      duration: 0.4,
+      ease: "linear",
+    },
+  },
+};
+
+export const fadeIn = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.2,
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+      ease: "linear",
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.3,
+      ease: "linear",
+    },
+  },
+};
+
+export const zoomOut = {
+  hidden: {
+    scale: 0,
+  },
+  visible: {
+    scale: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+      ease: "linear",
+    },
+  },
+  exit: {
+    scale: 0,
+    duration: 0.3,
+  },
+};
+
+export const slideBottom = {
+  hidden: {
+    maxHeight: 0,
+    opacity: 0,
+  },
+  visible: {
+    maxHeight: 900,
+    opacity: 1,
+    transition: {
+      duration: 0.3,
+      ease: "linear",
+    },
+  },
+  exit: {
+    maxHeight: 0,
+    opacity: 0,
+    transition: {
+      duration: 0.2,
+      ease: "linear",
+    },
+  },
+};
+
+export const slideTop = {
+  hidden: {
+    y: "100%",
+  },
+  visible: {
+    y: 0,
+    transition: {
+      duration: 0.4,
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+      ease: "linear",
+    },
+  },
+  exit: {
+    y: 0,
     transition: {
       duration: 0.4,
       ease: "linear",

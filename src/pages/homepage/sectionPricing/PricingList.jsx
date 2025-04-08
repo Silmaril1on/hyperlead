@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { zoomOut } from "@/animationvalues/motionVariants";
-import pricingData from "@/lib/localDB/pricingData";
+import pricingData from "@/localDB/pricingData";
 import Benefits from "./components/Benefits";
 import PricingTitle from "./components/PricingTitles";
 import PricingButton from "./components/PricingButton";

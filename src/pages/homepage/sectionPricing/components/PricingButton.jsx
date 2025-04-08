@@ -1,4 +1,4 @@
-import Button from "@/components/Button";
+import Button from "@/components/buttons/Button";
 import { IoMdHome } from "react-icons/io";
 
 const PricingButton = ({ item }) => {

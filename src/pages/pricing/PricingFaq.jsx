@@ -1,7 +1,7 @@
 import Paragraph from "@/components/Paragraph";
 import SectionHeadline from "@/components/SectionHeadline";
 import Title from "@/components/Title";
-import pricingFaqData from "@/lib/localDB/pricingFaqData";
+import pricingFaqData from "@/localDB/pricingFaqData";
 
 const PricingFaq = () => {
   return (

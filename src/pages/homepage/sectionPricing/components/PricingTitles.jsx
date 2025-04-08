@@ -1,4 +1,4 @@
-import Button from "@/components/Button";
+import Button from "@/components/buttons/Button";
 import Title from "@/components/Title";
 
 const PricingTitle = ({ item }) => {
@@ -9,7 +9,7 @@ const PricingTitle = ({ item }) => {
     <div>
       <div className="relative mb-4">
         <div className="absolute right-0 top-0">
-          {item.color && <Button type="tetriary">Most Popular</Button>}
+          {item.color && <Button type="blue">Most Popular</Button>}
         </div>
         <Title>{item.title}</Title>
       </div>

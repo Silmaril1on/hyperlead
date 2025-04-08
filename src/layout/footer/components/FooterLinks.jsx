@@ -1,5 +1,5 @@
 import SubTitle from "@/components/SubTitle";
-import footerData from "@/lib/localDB/footerData";
+import footerData from "@/localDB/footerData";
 import Link from "next/link";
 
 const FooterLinks = () => {

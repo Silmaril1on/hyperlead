@@ -1,6 +1,6 @@
 const handleAuthError = (error) => {
   if (error.message.includes("User already registered")) {
-    return "This email is already registered. Please try signing in instead.";
+    return "This email is already registered. Please try login or use different email.";
   }
   if (error.message.includes("Invalid email")) {
     return "Please enter a valid email address.";

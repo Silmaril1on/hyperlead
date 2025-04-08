@@ -1,8 +1,8 @@
 import { BsChevronBarRight } from "react-icons/bs";
-import Button from "@/components/Button";
 import Globe from "./Globe";
 import Title from "@/components/Title";
 import Paragraph from "@/components/Paragraph";
+import Button from "@/components/buttons/Button";
 
 const SectionGlobe = () => {
   return (
@@ -14,7 +14,7 @@ const SectionGlobe = () => {
             HyperLead empowers you to unleash your creativity and build anything
             you can imagine.
           </Paragraph>
-          <Button type="secondary">
+          <Button type="light">
             <BsChevronBarRight />
             <span>Contact Sales</span>
           </Button>

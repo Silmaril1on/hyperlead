@@ -10,19 +10,20 @@
   .center {
     @apply flex items-center justify-center;
   }
-  .link {
-    @apply text-zinc-700 hover:text-black duration-300 font-medium capitalize;
-  }
   .primary-outline {
     @apply outline-10 md:outline-20 outline-stone-300/20 m-14;
   }
   .shadow {
     @apply shadow-[0px_0px_10px_0px_#d4d4d4];
   }
-  input {
-    @apply rounded-3xl bg-neutral-100 px-3 py-2 placeholder:capitalize placeholder:opacity-40 outline-none w-full;
+  input,
+  select {
+    @apply rounded-3xl bg-neutral-100 px-3 py-2 placeholder:capitalize placeholder:opacity-40 outline-none w-full  duration-300  focus:ring-1 focus:ring-neutral-300;
   }
   label {
     @apply capitalize font-medium;
+  }
+  .row {
+    @apply flex items-center space-x-1;
   }
 }

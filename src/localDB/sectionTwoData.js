@@ -1,8 +1,8 @@
-import image1 from "../../../public/assets/image1.png";
-import image2 from "../../../public/assets/image2.png";
-import image3 from "../../../public/assets/image3.png";
-import image4 from "../../../public/assets/image4.png";
-import image5 from "../../../public/assets/image5.png";
+import image1 from "../../public/assets/image1.png";
+import image2 from "../../public/assets/image2.png";
+import image3 from "../../public/assets/image3.png";
+import image4 from "../../public/assets/image4.png";
+import image5 from "../../public/assets/image5.png";
 
 const sectionTwoData = [
   {

@@ -1,5 +1,5 @@
 "use client";
-import logoData from "@/lib/localDB/companyLogos";
+import logoData from "@/localDB/companyLogos";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { infinityScroll } from "@/animationvalues/motionVariants";

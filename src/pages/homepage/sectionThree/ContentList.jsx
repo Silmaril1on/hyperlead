@@ -2,7 +2,7 @@
 import Title from "@/components/Title";
 import { motion } from "framer-motion";
 import { slideTop } from "@/animationvalues/motionVariants";
-import sectionThreedata from "@/lib/localDB/sectionThreeData";
+import sectionThreedata from "@/localDB/sectionThreeData";
 
 const ContentList = () => {
   return (

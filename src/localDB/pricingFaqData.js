@@ -9,7 +9,7 @@ const pricingFaqData = [
   },
   {
     title: "Do you offer a trial?",
-    desc: "Unfortuantely not. Our free plan is very generous and you can get a very good feel of the product just by using that. If you want, just buy a premium plan without worring since we have a 30-day money-back refund policy.",
+    desc: "Unfortunately not. Our free plan is very generous and you can get a very good feel of the product just by using that. If you want, just buy a premium plan without worring since we have a 30-day money-back refund policy.",
   },
   {
     title: "What payment options do you have?",

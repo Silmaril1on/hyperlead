@@ -1,6 +1,6 @@
 "use client";
 
-import Button from "@/components/Button";
+import Button from "@/components/buttons/Button";
 import { useState } from "react";
 
 const SubscribeForm = () => {
@@ -13,6 +13,7 @@ const SubscribeForm = () => {
         id="email"
         name="email"
         placeholder="enter your email"
+        autoComplete="false"
       />
 
       <Button className="absolute right-0  top-0" type="submit">
