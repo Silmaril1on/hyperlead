@@ -1,6 +1,6 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import { zoomOut } from "@/animationvalues/motionVariants";
+import { zoomOut } from "@/animationValues/motionVariants";
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setError } from "@/features/modalSlice";

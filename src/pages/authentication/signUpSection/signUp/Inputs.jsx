@@ -1,3 +1,4 @@
+import FlexBox from "@/components/containers/FlexBox";
 import PwdStrengthCheck from "./PwdStrengthCheck";
 
 const Inputs = ({
@@ -12,34 +13,32 @@ const Inputs = ({
 }) => {
   return (
     <>
-      <div>
-        <label htmlFor="email">Email</label>
-        <input
-          required
-          type="email"
-          name="email"
-          id="userEmail"
-          className="mt-1"
-          placeholder="Your Email"
-          autoComplete="false"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="name">Display Name</label>
-        <input
-          id="name"
-          type="text"
-          name="name"
-          className="mt-1"
-          placeholder="Display name"
-          autoComplete="false"
-          value={userName}
-          onChange={(e) => setUserName(e.target.value)}
-          required
-        />
-      </div>
+      <FlexBox type="row-3" className="*:w-full">
+        <div>
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="userEmail"
+            placeholder="Your Email"
+            autoComplete="false"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="name">Display Name</label>
+          <input
+            id="name"
+            type="text"
+            name="name"
+            placeholder="Display name"
+            autoComplete="false"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+        </div>
+      </FlexBox>
       <div>
         <label htmlFor="password">Password</label>
         <input
@@ -50,7 +49,6 @@ const Inputs = ({
           placeholder="Enter Your Password"
           autoComplete="new-password"
           onChange={(e) => setPassword(e.target.value)}
-          required
           className="mt-1"
         />
         <PwdStrengthCheck password={password} />
@@ -65,7 +63,6 @@ const Inputs = ({
           placeholder="Confirm Your Password"
           autoComplete="new-password"
           onChange={(e) => setConfirmPassword(e.target.value)}
-          required
           className="mt-1"
         />
       </div>

@@ -23,7 +23,7 @@ const MyProfile = memo(({ data }) => {
   }, [toggleState]);
 
   return (
-    <section className="px-3 relative w-full center flex-col">
+    <FlexBox type="column-10" className="relative py-10">
       <GoldGradient />
       <FormContainer className="w-[90%]">
         <BackgroundWallpaper profile={data} />
@@ -36,7 +36,7 @@ const MyProfile = memo(({ data }) => {
         </FlexBox>
       </FormContainer>
       <AnimatePresence>{isOpen && <UpdateProfile />}</AnimatePresence>
-    </section>
+    </FlexBox>
   );
 });
 

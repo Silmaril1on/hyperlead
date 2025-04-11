@@ -1,7 +1,7 @@
 const FormContainer = ({ className, children }) => {
   return (
     <div
-      className={`${className} primary-border center flex-col space-y-5 bg-white primary-outline`}
+      className={`${className} primary-border center flex-col bg-white primary-outline`}
     >
       {children}
     </div>

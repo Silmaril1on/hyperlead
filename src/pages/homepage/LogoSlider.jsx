@@ -2,7 +2,7 @@
 import logoData from "@/localDB/companyLogos";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { infinityScroll } from "@/animationvalues/motionVariants";
+import { infinityScroll } from "@/animationValues/motionVariants";
 
 const LogoSlider = () => {
   return (

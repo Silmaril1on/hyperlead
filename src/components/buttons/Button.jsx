@@ -1,4 +1,8 @@
+"use client";
+import Link from "next/link";
+import FlexBox from "../containers/FlexBox";
 import Spinner from "../Spinner";
+import { IoIosArrowBack } from "react-icons/io";
 
 const Button = ({
   children,
@@ -8,6 +12,7 @@ const Button = ({
   type,
   loading,
   text,
+  href,
 }) => {
   return (
     <button
@@ -18,17 +23,33 @@ const Button = ({
           : type === "blue"
           ? "text-indigo-500 font-medium bg-indigo-300/20 border-indigo-200 text-sm border"
           : "bg-black hover:bg-black/80 text-white font-semibold"
-      }  duration-300 cursor-pointer flex items-center space-x-2 rounded-3xl capitalize px-4 py-2`}
+      }  duration-300 text-sm cursor-pointer flex items-center space-x-2 rounded-3xl capitalize px-4 py-2`}
     >
       {loading ? (
-        <div className="space-x-2 flex items-center">
+        <FlexBox type="row-1">
           <span>{text}</span>
           <Spinner />
-        </div>
+        </FlexBox>
       ) : (
         <>
-          {icon && icon}
-          {children}
+          {href ? (
+            href === "back" ? (
+              <FlexBox type="row" onClick={() => window.history.back()}>
+                <IoIosArrowBack size={20} />
+                <span>Back</span>
+              </FlexBox>
+            ) : (
+              <Link href={href} className="flex items-center space-x-2">
+                {icon && icon}
+                {children}
+              </Link>
+            )
+          ) : (
+            <>
+              {icon && icon}
+              {children}
+            </>
+          )}
         </>
       )}
     </button>

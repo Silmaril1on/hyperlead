@@ -16,19 +16,19 @@ const ProfileSettings = ({ isOpen, handleActive }) => {
           animation="bottom"
           className="absolute z-10 top-12 right-0 w-44 primary-border space-y-1 bg-white border shadow *:flex *:justify-end"
         >
-          <MotionChildren animation="zoom-out" onClick={handleActive}>
+          <MotionChildren animation="fade-in" onClick={handleActive}>
             <LinkComponent href="/myprofile">
               <span>My profile</span>
               <FaUser />
             </LinkComponent>
           </MotionChildren>
-          <MotionChildren animation="zoom-out">
+          <MotionChildren animation="fade-in">
             <LinkComponent href="/myprofile">
               <span>dashboard</span>
               <MdDashboard />
             </LinkComponent>
           </MotionChildren>
-          <MotionChildren onClick={signOut} animation="zoom-out">
+          <MotionChildren onClick={signOut} animation="fade-in">
             <Button type="light">
               <IoIosLogOut />
               <span>logout</span>

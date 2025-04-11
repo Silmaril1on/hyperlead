@@ -5,7 +5,7 @@ import {
   slideLeft,
   slideTop,
   zoomOut,
-} from "@/animationvalues/motionVariants";
+} from "@/animationValues/motionVariants";
 import { motion } from "framer-motion";
 const MotionChildren = ({ animation, children, className, onClick }) => {
   const getVariant = (animation) => {

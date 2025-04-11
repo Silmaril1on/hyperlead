@@ -1,13 +1,13 @@
 "use client";
 import Inputs from "./Inputs";
+import FormButtons from "./FormButtons";
 import { signUp } from "@/lib/authActions/authActions";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { validateForm } from "../../../helpers/validateform";
 import { useDispatch } from "react-redux";
 import { setError } from "@/features/modalSlice";
 import { setUser, setLoading } from "@/features/userSlice";
-import FormButtons from "./FormButtons";
+import { validateForm } from "@/helpers/validateForm";
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -34,9 +34,8 @@ const SignUpForm = () => {
         dispatch(setError(error));
         return;
       }
-
       dispatch(setUser(data.user));
-      router.push("/");
+      router.push("/preferences");
     } catch (err) {
       dispatch(setError("An unexpected error occurred. Please try again."));
     } finally {
@@ -46,7 +45,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4" noValidate>
       <Inputs
         email={email}
         userName={userName}

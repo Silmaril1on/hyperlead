@@ -1,22 +1,19 @@
-"use client";
+import MotionChildren from "@/components/containers/MotionChildren";
+import MotionContainer from "@/components/containers/MotionContainer";
 import Title from "@/components/Title";
 import sectionTwoData from "@/localDB/sectionTwoData";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { zoomOut } from "@/animationvalues/motionVariants";
 
 const ContentList = () => {
   return (
-    <motion.section
-      variants={zoomOut}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
+    <MotionContainer
+      animation="zoom-out"
+      type="in-view"
       className="px-3 md:px-[12%]"
     >
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-        <motion.div
-          variants={zoomOut}
+        <MotionChildren
+          animation="zoom-out"
           className="md:col-span-2 primary-border bg-[#f8fafc] space-y-5"
         >
           <div className="w-full">
@@ -33,9 +30,9 @@ const ContentList = () => {
             <Title>{sectionTwoData[0].title}</Title>
             <p>{sectionTwoData[0].desc}</p>
           </article>
-        </motion.div>
-        <motion.div
-          variants={zoomOut}
+        </MotionChildren>
+        <MotionChildren
+          animation="zoom-out"
           className="primary-border bg-[#f8fafc] space-y-5"
         >
           <div className="w-full">
@@ -51,15 +48,15 @@ const ContentList = () => {
             <Title>{sectionTwoData[1].title}</Title>
             <p>{sectionTwoData[1].desc}</p>
           </article>
-        </motion.div>
+        </MotionChildren>
       </div>
 
       <div className="grid md:grid-cols-3 gap-6">
         {sectionTwoData.slice(2, 5).map((item) => (
-          <motion.div
-            variants={zoomOut}
-            className="primary-border bg-[#f8fafc] space-y-5"
+          <MotionChildren
             key={item.id}
+            animation="zoom-out"
+            className="primary-border bg-[#f8fafc] space-y-5"
           >
             <div className="w-full">
               <Image
@@ -74,10 +71,10 @@ const ContentList = () => {
               <Title>{item.title}</Title>
               <p>{item.desc}</p>
             </article>
-          </motion.div>
+          </MotionChildren>
         ))}
       </div>
-    </motion.section>
+    </MotionContainer>
   );
 };
 

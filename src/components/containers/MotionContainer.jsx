@@ -6,9 +6,9 @@ import {
   slideLeft,
   slideTop,
   zoomOut,
-} from "@/animationvalues/motionVariants";
+} from "@/animationValues/motionVariants";
 
-const MotionContainer = ({ children, className, animation }) => {
+const MotionContainer = ({ children, className, animation, type }) => {
   const getVariant = (animation) => {
     switch (animation) {
       case "left":
@@ -27,18 +27,18 @@ const MotionContainer = ({ children, className, animation }) => {
   };
 
   return (
-    <div className="overflow-hidden">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        exit="exit"
-        className={className}
-        variants={getVariant(animation)}
-        viewport={{ once: true }}
-      >
-        {children}
-      </motion.div>
-    </div>
+    <motion.div
+      initial="hidden"
+      {...(type === "in-view"
+        ? { whileInView: "visible" }
+        : { animate: "visible" })}
+      exit="exit"
+      className={className}
+      variants={getVariant(animation)}
+      viewport={{ once: true }}
+    >
+      {children}
+    </motion.div>
   );
 };
 

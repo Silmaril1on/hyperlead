@@ -1,7 +1,9 @@
+"use client";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser, updateUserProfile } from "@/features/userSlice";
 import { setError } from "@/features/modalSlice";
+import { useRouter } from "next/navigation";
 import { updateProfile } from "@/lib/profileActions/profileActions";
 import Button from "@/components/buttons/Button";
 import FormContainer from "@/components/containers/FormContainer";
@@ -13,6 +15,7 @@ import MotionContainer from "@/components/containers/MotionContainer";
 const UpdateProfile = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     userName: user?.profile?.userName || user?.email?.split("@")[0] || "",
@@ -70,9 +73,9 @@ const UpdateProfile = () => {
   };
 
   return (
-    <MotionContainer animation="bottom">
+    <MotionContainer animation="fade-in">
       <FormContainer>
-        <form className="center flex-col space-y-6" onSubmit={handleSubmit}>
+        <form className="center flex-col space-y-3" onSubmit={handleSubmit}>
           <FlexBox type="column-1">
             <Title>Update Profile</Title>
             <Paragraph>Your current infromation</Paragraph>

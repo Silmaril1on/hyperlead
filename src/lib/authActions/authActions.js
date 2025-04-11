@@ -44,13 +44,19 @@ export const signUp = async ({ email, password, userName }) => {
       email,
       password,
       options: {
-        data: { userName },
+        data: {
+          userName,
+          display_name: userName,
+        },
       },
     });
     if (authError) throw authError;
     if (!authData.user) throw new Error("User creation failed");
     const { error: updateError } = await supabase.auth.updateUser({
-      data: { userName },
+      data: {
+        userName,
+        display_name: userName,
+      },
     });
     if (updateError) throw updateError;
     const profile = await createOrUpdateProfile(authData.user, { userName });

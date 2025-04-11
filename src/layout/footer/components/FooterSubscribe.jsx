@@ -8,9 +8,7 @@ const FooterSubscribe = () => {
       <Logo />
       <div>
         <SubscribeForm />
-        <Paragraph>
-          Stay updated with the latest—no spam, just product news.
-        </Paragraph>
+        <Paragraph>Stay updated with the latest news.</Paragraph>
       </div>
     </div>
   );

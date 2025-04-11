@@ -1,7 +1,7 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { slideShow } from "@/animationvalues/motionVariants";
+import { slideShow } from "@/animationValues/motionVariants";
 
 const Swiper = ({ children, className, items }) => {
   const [active, setActive] = useState(0);

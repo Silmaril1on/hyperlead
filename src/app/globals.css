@@ -11,7 +11,7 @@
     @apply flex items-center justify-center;
   }
   .primary-outline {
-    @apply outline-10 md:outline-20 outline-stone-300/20 m-14;
+    @apply outline-10 md:outline-20 outline-stone-300/20 m-5;
   }
   .shadow {
     @apply shadow-[0px_0px_10px_0px_#d4d4d4];

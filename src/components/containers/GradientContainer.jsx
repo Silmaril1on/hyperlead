@@ -9,7 +9,9 @@ const GradientContainer = ({ type }) => {
   };
 
   return (
-    <div className={`absolute inset-0 -z-1  ${getGradientColors(type)}`} />
+    <div
+      className={`absolute inset-0 -z-1 h-full ${getGradientColors(type)}`}
+    />
   );
 };
 

@@ -1,4 +1,4 @@
-import SignUpComponent from "@/pages/authentication/signup/SignUpComponent";
+import SignUpComponent from "@/pages/authentication/signUpSection/SignUpComponent";
 
 export const metadata = {
   title: "Hyperlead - Sign Up",

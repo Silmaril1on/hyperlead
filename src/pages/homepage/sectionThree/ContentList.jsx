@@ -1,7 +1,7 @@
 "use client";
 import Title from "@/components/Title";
 import { motion } from "framer-motion";
-import { slideTop } from "@/animationvalues/motionVariants";
+import { slideTop } from "@/animationValues/motionVariants";
 import sectionThreedata from "@/localDB/sectionThreeData";
 
 const ContentList = () => {

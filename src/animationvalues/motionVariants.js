@@ -68,7 +68,7 @@ export const fadeIn = {
   visible: {
     opacity: 1,
     transition: {
-      duration: 0.2,
+      duration: 0.4,
       staggerChildren: 0.2,
       delayChildren: 0.1,
       ease: "linear",
@@ -111,6 +111,8 @@ export const slideBottom = {
     opacity: 1,
     transition: {
       duration: 0.3,
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
       ease: "linear",
     },
   },

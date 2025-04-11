@@ -1,10 +1,10 @@
 import "./globals.css";
-import Navigation from "../layout/navigation/Navigation";
-import SideBar from "@/layout/navigation/side/SideBar";
-import Footer from "@/layout/footer/Footer";
 import { StoreProvider } from "@/lib/store/StoreProvides";
 import AuthProvider from "@/lib/authActions/AuthProvider";
 import ErrorMsg from "@/components/ErrorMsg";
+import NavigationWrapper from "@/layout/navigation/NavigationWrapper";
+import SideBar from "@/layout/navigation/side/SideBar";
+import Footer from "@/layout/footer/Footer";
 
 export const metadata = {
   title: "HyperLead | Home Page",
@@ -18,10 +18,10 @@ export default function RootLayout({ children }) {
         <html lang="en">
           <body className="center flex-col">
             <main className="relative w-full max-w-[1650px]">
-              <Navigation />
+              <NavigationWrapper />
               {children}
-              <SideBar />
               <ErrorMsg />
+              <SideBar />
               <Footer />
             </main>
           </body>

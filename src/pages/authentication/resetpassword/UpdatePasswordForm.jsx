@@ -1,7 +1,7 @@
 import FormContainer from "@/components/containers/FormContainer";
 import Title from "@/components/Title";
 import React from "react";
-import PwdStrengthCheck from "../signup/PwdStrengthCheck";
+import PwdStrengthCheck from "../signUpSection/signUp/PwdStrengthCheck";
 import Button from "@/components/Button";
 import MotionContainer from "@/components/containers/MotionContainer";
 

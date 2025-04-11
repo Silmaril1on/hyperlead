@@ -12,7 +12,7 @@ const ProfileInformation = ({ profile }) => {
   };
 
   return (
-    <FlexBox type="column" className="mt-20 space-y-3 w-full">
+    <FlexBox type="column" className="mt-20 space-y-3 w-full mb-3">
       <ProfileHeader profile={profile} />
       <Button type="blue" onClick={openDetails}>
         {isOpen ? "Hide profile details" : "Show profile details"}

@@ -18,7 +18,7 @@ const FlexBox = ({ children, className, type, onClick }) => {
       case "row-between":
         return "flex justify-between items-center";
       case "column":
-        return "flex flex-col space-y-1 items-center";
+        return "flex flex-col items-center";
       case "column-1":
         return "flex flex-col space-y-1 items-center";
       case "column-2":
@@ -27,6 +27,10 @@ const FlexBox = ({ children, className, type, onClick }) => {
         return "flex flex-col space-y-3 items-center";
       case "column-5":
         return "flex flex-col space-y-5 items-center";
+      case "column-10":
+        return "flex flex-col space-y-10 items-center";
+      case "column-center":
+        return "flex flex-col space-y-2 items-center justify-center";
       case "column-start":
         return "flex flex-col items-start";
       case "column-end":
