@@ -1,4 +1,4 @@
-import Button from "@/components/Button";
+import Button from "@/components/buttons/Button";
 import FormContainer from "@/components/containers/FormContainer";
 import MotionContainer from "@/components/containers/MotionContainer";
 import LinkComponent from "@/components/buttons/LinkComponent";
