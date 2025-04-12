@@ -14,9 +14,9 @@ import ButtonSection from "./ButtonSection";
 import PrefList from "./PrefList";
 
 const preferencesData = [
-  "marketing",
-  "sales",
-  "engineering",
+  "marketing & ads",
+  "automotive",
+  "retail",
   "design",
   "hr",
   "finance",
