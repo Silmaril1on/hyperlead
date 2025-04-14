@@ -6,10 +6,11 @@ import Paragraph from "@/components/Paragraph";
 import Title from "@/components/Title";
 import React from "react";
 import { MdLockReset } from "react-icons/md";
+import FlexBox from "@/components/containers/FlexBox";
 
 const ResetForm = ({ handleSubmit, loading, email, setEmail }) => {
   return (
-    <FormContainer className="w-[90%] max-w-[400px]">
+    <FormContainer className="w-[90%] max-w-[400px] space-y-2">
       <MotionContainer animation="zoom-out">
         <Title>Reset Password</Title>
       </MotionContainer>
@@ -39,12 +40,12 @@ const ResetForm = ({ handleSubmit, loading, email, setEmail }) => {
         </Button>
       </form>
 
-      <div className="flex space-x-2">
+      <FlexBox type="row">
         <Paragraph>Remember your password?</Paragraph>
         <LinkComponent type="blue" href="/signin">
           Sign In
         </LinkComponent>
-      </div>
+      </FlexBox>
     </FormContainer>
   );
 };

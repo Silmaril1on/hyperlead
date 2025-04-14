@@ -20,7 +20,7 @@ const DisplayUserName = () => {
         className="flex items-center space-x-2 cursor-pointer relative "
         onClick={handleActive}
       >
-        <div className="flex flex-col items-end">
+        <div className="hidden md:flex flex-col items-end">
           <h1>{user?.profile?.userName || user?.email}</h1>
           <span className="text-[10px] text-neutral-500">{user?.email}</span>
         </div>

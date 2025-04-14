@@ -31,7 +31,7 @@ const ErrorMsg = () => {
             type === "success"
               ? "bg-green-100 border border-green-400 text-green-700"
               : "bg-red-100 border-2 border-red-400 text-red-700"
-          } px-8 fixed z-20 bottom-5 right-5 py-3  font-semibold`}
+          } px-2 md:px-8 fixed z-20 bottom-5 right-5 py-3 font-semibold`}
         >
           {error}
           <motion.div

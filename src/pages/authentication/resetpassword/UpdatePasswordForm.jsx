@@ -1,9 +1,8 @@
 import FormContainer from "@/components/containers/FormContainer";
 import Title from "@/components/Title";
-import React from "react";
 import PwdStrengthCheck from "../signUpSection/signUp/PwdStrengthCheck";
-import Button from "@/components/Button";
 import MotionContainer from "@/components/containers/MotionContainer";
+import Button from "@/components/buttons/Button";
 
 const UpdatePasswordForm = ({
   password,
@@ -12,7 +11,7 @@ const UpdatePasswordForm = ({
   loading,
 }) => {
   return (
-    <FormContainer className="w-[90%] max-w-[400px]">
+    <FormContainer className="w-[90%] max-w-[400px] space-y-2">
       <MotionContainer animation="zoom-out">
         <Title>Update Password</Title>
       </MotionContainer>

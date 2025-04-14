@@ -19,11 +19,11 @@ const Button = ({
       onClick={onClick}
       className={`${className} ${
         type === "light"
-          ? "bg-neutral-100 hover:bg-neutral-200/60 text-black border border-neutral-300 font-semibold"
+          ? "light-style "
           : type === "blue"
-          ? "text-indigo-500 font-medium bg-indigo-300/20 border-indigo-200 text-sm border"
-          : "bg-black hover:bg-black/80 text-white font-semibold"
-      }  duration-300 text-sm cursor-pointer flex items-center space-x-2 rounded-3xl capitalize px-4 py-2`}
+          ? "blue-style text-sm"
+          : "black-style"
+      } text-sm cursor-pointer border font-semibold flex items-center space-x-2 rounded-3xl capitalize px-4 py-2`}
     >
       {loading ? (
         <FlexBox type="row-1">

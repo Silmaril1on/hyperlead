@@ -36,7 +36,7 @@ const SignInForm = () => {
   };
 
   return (
-    <form onSubmit={handleLogin} className="space-y-4">
+    <form onSubmit={handleLogin} className="space-y-4 w-full">
       <div>
         <label htmlFor="email">Email</label>
         <input
@@ -64,7 +64,11 @@ const SignInForm = () => {
           required
           className="mt-1"
         />
-        <LinkComponent type="blue" href="/resetpassword">
+        <LinkComponent
+          className="text-[12px]"
+          type="blue"
+          href="/resetpassword"
+        >
           Forgot Password?
         </LinkComponent>
       </div>

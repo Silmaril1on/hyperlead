@@ -1,16 +1,10 @@
 "use client";
-import ZoomOut from "@/components/containers/ZoomOut";
-import Title from "@/components/Title";
-import Button from "@/components/Button";
-import ErrorMsg from "@/components/ErrorMsg";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setError } from "@/features/modalSlice";
 import { updatePassword } from "@/lib/authActions/authActions";
 import { useRouter } from "next/navigation";
-import PwdStrengthCheck from "../signUpSection/signUp/PwdStrengthCheck";
 import { validatePassword } from "@/helpers/validatePwd";
-import FormContainer from "@/components/containers/FormContainer";
 import ResetError from "./ResetError";
 import UpdatePasswordForm from "./UpdatePasswordForm";
 

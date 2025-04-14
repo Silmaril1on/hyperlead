@@ -13,8 +13,10 @@ export default function AuthProvider({ children }) {
 
     const initializeAuth = async () => {
       try {
-        const { data: { session } } = await supabase.auth.getSession();
-        
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
+
         if (!session) {
           if (mounted) {
             dispatch(setUser(null));
@@ -43,7 +45,9 @@ export default function AuthProvider({ children }) {
 
     const handleVisibilityChange = async () => {
       if (document.visibilityState === "visible") {
-        const { data: { session } } = await supabase.auth.getSession();
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
         if (session && mounted) {
           const currentUser = await getCurrentUser();
           if (currentUser.data && mounted) {
@@ -56,22 +60,22 @@ export default function AuthProvider({ children }) {
     initializeAuth();
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
-        if (!mounted) return;
-        
-        if (event === "SIGNED_IN" && session) {
-          const { data } = await getCurrentUser();
-          if (mounted) {
-            dispatch(setUser(data));
-          }
-        } else if (event === "SIGNED_OUT") {
-          if (mounted) {
-            dispatch(setUser(null));
-          }
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(async (event, session) => {
+      if (!mounted) return;
+
+      if (event === "SIGNED_IN" && session) {
+        const { data } = await getCurrentUser();
+        if (mounted) {
+          dispatch(setUser(data));
+        }
+      } else if (event === "SIGNED_OUT") {
+        if (mounted) {
+          dispatch(setUser(null));
         }
       }
-    );
+    });
 
     return () => {
       mounted = false;

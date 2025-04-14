@@ -1,16 +1,17 @@
-import Logo from "@/components/Logo";
 import SubscribeForm from "./SubscribeForm";
 import Paragraph from "@/components/Paragraph";
+import Logo from "@/components/Logo";
+import FlexBox from "@/components/containers/FlexBox";
 
 const FooterSubscribe = () => {
   return (
-    <div className="space-y-4">
+    <FlexBox type="column-start">
       <Logo />
       <div>
         <SubscribeForm />
         <Paragraph>Stay updated with the latest news.</Paragraph>
       </div>
-    </div>
+    </FlexBox>
   );
 };
 

@@ -13,6 +13,8 @@ const FlexBox = ({ children, className, type, onClick }) => {
         return "flex space-x-1 justify-end";
       case "row-start":
         return "flex space-x-1 justify-start";
+      case "row-start-2":
+        return "flex space-x-2 justify-start";
       case "row-center":
         return "flex space-x-1 justify-center items-center";
       case "row-between":
@@ -32,9 +34,9 @@ const FlexBox = ({ children, className, type, onClick }) => {
       case "column-center":
         return "flex flex-col space-y-2 items-center justify-center";
       case "column-start":
-        return "flex flex-col items-start";
+        return "flex flex-col items-start space-y-2";
       case "column-end":
-        return "flex flex-col items-end";
+        return "flex flex-col items-end space-y-2";
       default:
         return "flex space-x-1 items-center justify-center";
     }

@@ -22,8 +22,8 @@ const ProfileSettings = ({ isOpen, handleActive }) => {
               <FaUser />
             </LinkComponent>
           </MotionChildren>
-          <MotionChildren animation="fade-in">
-            <LinkComponent href="/myprofile">
+          <MotionChildren animation="fade-in" onClick={handleActive}>
+            <LinkComponent href="/dashboard">
               <span>dashboard</span>
               <MdDashboard />
             </LinkComponent>

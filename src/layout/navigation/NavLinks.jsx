@@ -37,7 +37,7 @@ const NavLinks = () => {
   return (
     <MotionContainer
       animation="zoom-out"
-      className="flex flex-col items-center md:space-x-4 md:flex-row"
+      className="flex flex-col items-center md:space-x-4 md:flex-row "
     >
       {navLinks.map((item) => {
         return (
@@ -46,7 +46,7 @@ const NavLinks = () => {
             onClick={handleClose}
             key={item.id}
           >
-            <LinkComponent href={item.link} className="text-4xl md:text-base">
+            <LinkComponent className="text-3xl md:text-sm" href={item.link}>
               {item.name}
             </LinkComponent>
           </MotionChildren>

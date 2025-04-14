@@ -1,5 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
-import { cookies } from 'next/headers';
+import { cookies } from "next/headers";
 
 export async function createServerClient() {
   const cookieStore = await cookies();
@@ -11,21 +11,24 @@ export async function createServerClient() {
   }
 
   if (!supabaseKey) {
-    throw new Error("Missing NEXT_PUBLIC_SUPABASE_ANON_KEY environment variable");
+    throw new Error(
+      "Missing NEXT_PUBLIC_SUPABASE_ANON_KEY environment variable"
+    );
   }
 
-  const projectRef = supabaseUrl.split('//')[1].split('.')[0];
+  const projectRef = supabaseUrl.split("//")[1].split(".")[0];
   const authCookieName = `sb-${projectRef}-auth-token`;
 
   const authCookie = cookieStore.get(authCookieName);
   let session = null;
-  
+
   if (authCookie?.value) {
     try {
       const parsedValue = JSON.parse(authCookie.value);
-      session = typeof parsedValue === 'string' ? JSON.parse(parsedValue) : parsedValue;
+      session =
+        typeof parsedValue === "string" ? JSON.parse(parsedValue) : parsedValue;
     } catch (error) {
-      console.error('Error parsing session cookie:', error);
+      console.error("Error parsing session cookie:", error);
     }
   }
 
@@ -41,18 +44,18 @@ export async function createServerClient() {
           }
           return null;
         },
-        setItem: (key, value) => {
-        },
-        removeItem: (key) => {
-        }
-      }
+        setItem: (key, value) => {},
+        removeItem: (key) => {},
+      },
     },
     global: {
       headers: {
         Cookie: cookieStore.toString(),
-        Authorization: session?.access_token ? `Bearer ${session.access_token}` : '',
+        Authorization: session?.access_token
+          ? `Bearer ${session.access_token}`
+          : "",
       },
-    }
+    },
   });
 
   if (session) {
@@ -60,4 +63,4 @@ export async function createServerClient() {
   }
 
   return client;
-} 
+}

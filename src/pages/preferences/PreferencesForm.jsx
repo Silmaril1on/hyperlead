@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import Button from "@/components/buttons/Button";
 import MotionContainer from "@/components/containers/MotionContainer";
 import { useRouter } from "next/navigation";
 import { updateProfile } from "@/lib/profileActions/profileActions";
@@ -14,8 +13,8 @@ import ButtonSection from "./ButtonSection";
 import PrefList from "./PrefList";
 
 const preferencesData = [
-  "marketing & ads",
-  "automotive",
+  "marketing & advertising",
+  "real estate",
   "retail",
   "design",
   "hr",
