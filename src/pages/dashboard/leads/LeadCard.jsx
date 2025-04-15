@@ -2,7 +2,6 @@ import SubTitle from "@/components/SubTitle";
 import Link from "next/link";
 import { FaBuilding, FaUsers, FaIndustry } from "react-icons/fa";
 import { CountryFlag } from "@/components/CountryFlagsComponent";
-import FlexBox from "@/components/containers/FlexBox";
 
 const InfoRow = ({ icon: Icon, children, className = "" }) => (
   <div className={`flex items-center space-x-2 text-gray-600 ${className}`}>
@@ -21,16 +20,20 @@ const LeadCard = ({ leads }) => {
           className="group bg-gradient-to-br from-neutral-50/40 from-10% to-neutral-100 rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all duration-300 "
         >
           <div className="p-3 space-y-2 ">
-            <FlexBox
-              type="row-start-2"
-              className="*:group-hover:text-blue-600 *:duration-300 "
-            >
+            <div className="*:group-hover:text-blue-600 *:duration-300 flex items-start space-x-2 border-b border-gray-200 pb-2">
               <FaBuilding className="mt-1" />
-              <SubTitle className="h-12 leading-tight">
+              <SubTitle className="h-12 leading-tight w-full">
                 {lead.company_title}
               </SubTitle>
-            </FlexBox>
-            <InfoRow icon={() => <CountryFlag countryName={lead.country} />}>
+            </div>
+            <InfoRow
+              icon={() => (
+                <CountryFlag
+                  className="rounded-lg"
+                  countryName={lead.country}
+                />
+              )}
+            >
               <span>{lead.country}</span>
             </InfoRow>
             <InfoRow icon={FaUsers}>{lead.employees} employees</InfoRow>

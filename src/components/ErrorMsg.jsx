@@ -1,43 +1,68 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
 import { zoomOut } from "@/animationValues/motionVariants";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setError } from "@/features/modalSlice";
+import LinkComponent from "./buttons/LinkComponent";
+import { IoIosArrowForward } from "react-icons/io";
+import Link from "next/link";
 
 const ErrorMsg = () => {
+  const toastRef = useRef(null);
   const dispatch = useDispatch();
+  const [isHovered, setIsHovered] = useState(false);
   const error = useSelector((state) => state.modal.error);
   const type = useSelector((state) => state.modal.type);
-  const toastRef = useRef(null);
+  const link = useSelector((state) => state.modal.link);
+  const title = useSelector((state) => state.modal.title);
 
   useEffect(() => {
-    if (error) {
-      const timer = setTimeout(() => dispatch(setError("")), 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [error]);
+    if (!error || isHovered) return;
+
+    const timer = setTimeout(() => {
+      dispatch(setError({ message: "", type: "", link: "", title: "" }));
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [error, isHovered]);
+
+  const handleClose = () => {
+    dispatch(setError({ message: "", type: "", link: "", title: "" }));
+  };
 
   return (
     <AnimatePresence>
       {error && (
         <motion.div
           ref={toastRef}
+          variants={zoomOut}
+          exit="exit"
           initial="hidden"
           whileInView="visible"
-          exit="exit"
-          variants={zoomOut}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
           className={`${
             type === "success"
               ? "bg-green-100 border border-green-400 text-green-700"
               : "bg-red-100 border-2 border-red-400 text-red-700"
-          } px-2 md:px-8 fixed z-20 bottom-5 right-5 py-3 font-semibold`}
+          } px-4 md:px-8 fixed z-20 bottom-5 right-5 py-3 font-semibold flex flex-col space-y-2`}
         >
-          {error}
+          <h1>{error}</h1>
+          {link && (
+            <Link
+              onClick={handleClose}
+              className="center border w-fit px-3 bg-red-600 text-white font-medium capitalize py-1 hover:bg-red-700 duration-300"
+              href={link}
+            >
+              <span>{title}</span>
+              <IoIosArrowForward />
+            </Link>
+          )}
           <motion.div
             initial={{ width: "100%" }}
-            animate={{ width: "0%" }}
-            transition={{ duration: 5, ease: "linear" }}
+            animate={{ width: isHovered ? "100%" : "0%" }}
+            transition={{ duration: isHovered ? 0 : 5, ease: "linear" }}
             className={`absolute left-0 rounded-full -bottom-2 h-[2px] ${
               type === "success" ? "bg-green-500" : "bg-red-400"
             }`}

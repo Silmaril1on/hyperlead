@@ -1,4 +1,4 @@
-const IconContainer = ({ children, size, color = "blue" }) => {
+const IconContainer = ({ children, size, color = "blue", className }) => {
   const sizeClasses = {
     sm: "w-10 h-10",
     md: "w-12 h-12",
@@ -16,7 +16,7 @@ const IconContainer = ({ children, size, color = "blue" }) => {
 
   return (
     <div
-      className={`${containerSize} ${containerColor} rounded-full duration-300 flex items-center justify-center`}
+      className={`${containerSize} ${containerColor} ${className} rounded-full duration-300 flex items-center justify-center`}
     >
       {children}
     </div>

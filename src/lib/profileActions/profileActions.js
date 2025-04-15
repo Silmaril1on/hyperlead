@@ -20,7 +20,6 @@ export const updateProfile = async (userId, updates) => {
     }
     return { data, error: null };
   } catch (error) {
-    console.error("Error updating profile:", error);
     return { data: null, error: error.message };
   }
 };

@@ -10,11 +10,11 @@ const FlexBox = ({ children, className, type, onClick }) => {
       case "row-5":
         return "flex space-x-5 items-center";
       case "row-end":
-        return "flex space-x-1 justify-end";
+        return "flex space-x-1 justify-end items-center";
       case "row-start":
-        return "flex space-x-1 justify-start";
+        return "flex space-x-1 justify-start items-center";
       case "row-start-2":
-        return "flex space-x-2 justify-start";
+        return "flex space-x-2 justify-start items-center";
       case "row-center":
         return "flex space-x-1 justify-center items-center";
       case "row-between":

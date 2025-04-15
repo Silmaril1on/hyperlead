@@ -4,6 +4,8 @@ const initialState = {
   isOpen: false,
   error: "",
   type: "error",
+  link: "",
+  title: "",
 };
 
 const modalSlice = createSlice({
@@ -14,13 +16,15 @@ const modalSlice = createSlice({
       state.isOpen = action.payload;
     },
     setError: (state, action) => {
-      const { message, type } =
+      const { message, type, link, title } =
         typeof action.payload === "string"
-          ? { message: action.payload, type: "error" }
+          ? { message: action.payload, type: "error", link: "", title: "" }
           : action.payload;
 
       state.error = message;
       state.type = type || "error";
+      state.link = link || "";
+      state.title = title || "";
     },
   },
 });
