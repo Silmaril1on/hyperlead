@@ -1,13 +1,19 @@
 "use client";
-import { useToggle } from "@/hooks/useToggle";
+import { setToggle } from "@/features/modalSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const SideButton = () => {
-  const { isOpen, toggle } = useToggle();
+  const dispatch = useDispatch();
+  const isOpen = useSelector((state) => state.modal.isOpen);
+
+  const handleSideBar = () => {
+    dispatch(setToggle(!isOpen));
+  };
 
   return (
     <div
-      className="cursor-pointer space-y-[10px] block md:hidden"
-      onClick={toggle}
+      className="cursor-pointer relative z-10 space-y-[10px] block md:hidden"
+      onClick={handleSideBar}
     >
       <div
         className={`h-[2px] w-6 bg-neutral-400/70 transition-transform duration-300 ${

@@ -33,7 +33,7 @@ const SideComponent = () => {
   return (
     <MotionContainer
       animation="fade-in"
-      className="w-full flex flex-row md:flex-col space-x-3 md:space-x-0 md:space-y-3"
+      className="w-full grid grid-cols-1 gap-2"
     >
       {links.map((link) => {
         const isActive = pathname === link.href;

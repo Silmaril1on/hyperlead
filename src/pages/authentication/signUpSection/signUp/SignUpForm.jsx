@@ -1,7 +1,7 @@
 "use client";
 import Inputs from "./Inputs";
 import FormButtons from "./FormButtons";
-import { signUp } from "@/lib/authActions/authActions";
+import { signUp } from "@/lib/actions/authActions";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useDispatch } from "react-redux";

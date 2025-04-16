@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setUser, setLoading } from "@/features/userSlice";
-import { getCurrentUser } from "./authActions";
+import { getCurrentUser } from "../actions/authActions";
 import supabase from "../config/supabaseClient";
 
 export default function AuthProvider({ children }) {

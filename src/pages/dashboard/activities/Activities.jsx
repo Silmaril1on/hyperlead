@@ -1,3 +1,4 @@
+"use client";
 import LeadActivities from "./LeadActivities";
 import MotionContainer from "@/components/containers/MotionContainer";
 import Headline from "@/components/Headline";

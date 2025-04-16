@@ -1,12 +1,12 @@
 "use client";
 import Button from "@/components/buttons/Button";
-import LinkComponent from "@/components/buttons/LinkComponent";
 import { setError } from "@/features/modalSlice";
-import { signIn } from "@/lib/authActions/authActions";
+import { signIn } from "@/lib/actions/authActions";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { IoMdLogIn } from "react-icons/io";
+import Link from "next/link";
 
 const SignInForm = () => {
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ const SignInForm = () => {
   };
 
   return (
-    <form onSubmit={handleLogin} className="space-y-4 w-full">
+    <form onSubmit={handleLogin} className="space-y-4 w-full" noValidate>
       <div>
         <label htmlFor="email">Email</label>
         <input
@@ -64,13 +64,12 @@ const SignInForm = () => {
           required
           className="mt-1"
         />
-        <LinkComponent
-          className="text-[12px]"
-          type="blue"
+        <Link
+          className="text-[12px] text-blue-500 hover:underline ml-1"
           href="/resetpassword"
         >
           Forgot Password?
-        </LinkComponent>
+        </Link>
       </div>
       <Button
         className="mx-auto"

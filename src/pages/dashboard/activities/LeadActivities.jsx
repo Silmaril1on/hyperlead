@@ -37,7 +37,7 @@ const LeadActivities = ({ data }) => {
   return (
     <MotionContainer
       animation="fade-in"
-      className="grid grid-cols-4 gap-4 w-full mt-2"
+      className="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full mt-2"
     >
       {activities.map((activity, index) => (
         <MotionChildren

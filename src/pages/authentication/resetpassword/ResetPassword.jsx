@@ -4,7 +4,7 @@ import ResetError from "./ResetError";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setError } from "@/features/modalSlice";
-import { sendPasswordResetEmail } from "@/lib/authActions/authActions";
+import { sendPasswordResetEmail } from "@/lib/actions/authActions";
 import { validateEmail } from "@/helpers/validateEmail";
 
 const ResetPassword = () => {

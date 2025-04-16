@@ -6,7 +6,7 @@ import { setError } from "@/features/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUserProfile } from "@/features/userSlice";
 import { selectUser } from "@/features/userSlice";
-import { uploadAvatar } from "@/lib/profileActions/profileActions";
+import { uploadAvatar } from "@/lib/actions/profileActions";
 
 const ProfileAvatar = memo(({ profile: initialProfile, userId }) => {
   const dispatch = useDispatch();

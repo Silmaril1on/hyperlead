@@ -1,8 +1,9 @@
 "use client";
+import Button from "@/components/buttons/Button";
 import MotionChildren from "@/components/containers/MotionChildren";
 import MotionContainer from "@/components/containers/MotionContainer";
-import LinkComponent from "@/components/buttons/LinkComponent";
 import { setToggle } from "@/features/modalSlice";
+import Link from "next/link";
 import { useDispatch } from "react-redux";
 
 const navLinks = [
@@ -46,9 +47,9 @@ const NavLinks = () => {
             onClick={handleClose}
             key={item.id}
           >
-            <LinkComponent className="text-3xl md:text-sm" href={item.link}>
+            <Link className="text-3xl md:text-sm" href={item.link}>
               {item.name}
-            </LinkComponent>
+            </Link>
           </MotionChildren>
         );
       })}

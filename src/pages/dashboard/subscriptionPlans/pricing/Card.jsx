@@ -1,20 +1,21 @@
 import Button from "@/components/buttons/Button";
-import FlexBox from "@/components/containers/FlexBox";
+import MotionChildren from "@/components/containers/MotionChildren";
 import MotionContainer from "@/components/containers/MotionContainer";
-import Headline from "@/components/Headline";
 import Paragraph from "@/components/Paragraph";
 import Title from "@/components/Title";
-import { setError } from "@/features/modalSlice";
+import React, { useState } from "react";
+import { IoCaretForwardOutline } from "react-icons/io5";
+import { useDispatch, useSelector } from "react-redux";
 import { selectUser, setUser } from "@/features/userSlice";
 import supabase from "@/lib/config/supabaseClient";
-import { assignLeadsToUser } from "@/lib/leadActions/leadActions";
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { IoCaretForwardOutline } from "react-icons/io5";
-import MotionChildren from "@/components/containers/MotionChildren";
-import { updateProfile } from "@/lib/profileActions/profileActions";
+import { setError } from "@/features/modalSlice";
+import {
+  assignLeadsToUser,
+  simulateSubscriptionExpiration,
+} from "@/lib/actions/leadActions";
+import { updateProfile } from "@/lib/actions/profileActions";
 
-const PlansCard = () => {
+const Card = () => {
   const user = useSelector(selectUser);
   const [loadingPlan, setLoadingPlan] = useState(null);
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ const PlansCard = () => {
         );
         return;
       }
-      const monthlyLeads = plan === "basic" ? 10 : 20;
+      const monthlyLeads = plan === "basic" ? 2 : 4;
       const {
         success,
         error: leadError,
@@ -94,11 +95,30 @@ const PlansCard = () => {
     }
   };
 
+  const handleTestExpiration = async () => {
+    try {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      const result = await simulateSubscriptionExpiration(session.user.id);
+      if (result.error) {
+        dispatch(setError({ message: result.error }));
+      } else {
+        dispatch(
+          setError({
+            message:
+              "Subscription expired successfully! You can now test renewal.",
+            type: "success",
+          })
+        );
+      }
+    } catch (error) {
+      dispatch(setError({ message: error.message }));
+    }
+  };
+
   return (
-    <FlexBox type="column-start" className="p-3 space-y-5">
-      <MotionContainer animation="zoom-out">
-        <Headline>Choose Your Plan</Headline>
-      </MotionContainer>
+    <>
       <MotionContainer
         animation="fade-in"
         className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full"
@@ -108,13 +128,13 @@ const PlansCard = () => {
           className="lead-container-style space-y-3"
         >
           <Title>Basic Plan</Title>
-          <Paragraph>10 leads per month</Paragraph>
+          <Paragraph>2 leads per month</Paragraph>
           <Button
             onClick={() => handleSubscription("basic")}
             loading={loadingPlan === "basic"}
           >
             <span>Subscribe to Basic</span>
-            <IoCaretForwardOutline size={23} />
+            <IoCaretForwardOutline />
           </Button>
         </MotionChildren>
         <MotionChildren
@@ -122,18 +142,21 @@ const PlansCard = () => {
           className="lead-container-style space-y-3"
         >
           <Title>Pro Plan</Title>
-          <Paragraph>20 leads per month</Paragraph>
+          <Paragraph>4 leads per month</Paragraph>
           <Button
             onClick={() => handleSubscription("pro")}
             loading={loadingPlan === "pro"}
           >
-            <span> Subscribe to Pro</span>
-            <IoCaretForwardOutline size={23} />
+            <span>Subscribe to Pro</span>
+            <IoCaretForwardOutline />
           </Button>
         </MotionChildren>
       </MotionContainer>
-    </FlexBox>
+      <Button onClick={handleTestExpiration}>
+        Test Subscription Expiration
+      </Button>
+    </>
   );
 };
 
-export default PlansCard;
+export default Card;

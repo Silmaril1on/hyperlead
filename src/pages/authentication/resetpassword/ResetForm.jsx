@@ -1,12 +1,11 @@
 import Button from "@/components/buttons/Button";
 import FormContainer from "@/components/containers/FormContainer";
 import MotionContainer from "@/components/containers/MotionContainer";
-import LinkComponent from "@/components/buttons/LinkComponent";
 import Paragraph from "@/components/Paragraph";
 import Title from "@/components/Title";
 import React from "react";
-import { MdLockReset } from "react-icons/md";
 import FlexBox from "@/components/containers/FlexBox";
+import { MdLockReset } from "react-icons/md";
 
 const ResetForm = ({ handleSubmit, loading, email, setEmail }) => {
   return (
@@ -42,9 +41,9 @@ const ResetForm = ({ handleSubmit, loading, email, setEmail }) => {
 
       <FlexBox type="row">
         <Paragraph>Remember your password?</Paragraph>
-        <LinkComponent type="blue" href="/signin">
+        <Button type="blue" href="/signin">
           Sign In
-        </LinkComponent>
+        </Button>
       </FlexBox>
     </FormContainer>
   );

@@ -1,10 +1,10 @@
 import "./globals.css";
-import { StoreProvider } from "@/lib/store/StoreProvides";
-import AuthProvider from "@/lib/authActions/AuthProvider";
+import AuthProvider from "@/lib/store/AuthProvider";
 import ErrorMsg from "@/components/ErrorMsg";
 import NavigationWrapper from "@/layout/navigation/NavigationWrapper";
 import SideBar from "@/layout/navigation/side/SideBar";
 import Footer from "@/layout/footer/Footer";
+import { StoreProvider } from "@/lib/store/StoreProvider";
 
 export const metadata = {
   title: "HyperLead | Home Page",

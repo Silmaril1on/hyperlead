@@ -2,6 +2,20 @@ import supabase from "../config/supabaseClient";
 
 export const updateProfile = async (userId, updates) => {
   try {
+    if (!userId) {
+      throw new Error("User ID is required");
+    }
+    const { data: existingProfile, error: checkError } = await supabase
+      .from("profiles")
+      .select()
+      .eq("id", userId)
+      .single();
+    if (checkError) {
+      throw new Error("Failed to verify user profile");
+    }
+    if (!existingProfile) {
+      throw new Error("User profile not found");
+    }
     const { data, error } = await supabase
       .from("profiles")
       .update({
@@ -11,16 +25,26 @@ export const updateProfile = async (userId, updates) => {
       .eq("id", userId)
       .select()
       .single();
-    if (error) throw error;
+    if (error) {
+      console.error("Profile update error:", error);
+      throw error;
+    }
     if (updates.userName) {
       const { error: authError } = await supabase.auth.updateUser({
         data: { userName: updates.userName },
       });
-      if (authError) throw authError;
+      if (authError) {
+        console.error("Auth update error:", authError);
+        throw authError;
+      }
     }
     return { data, error: null };
   } catch (error) {
-    return { data: null, error: error.message };
+    console.error("Update profile error:", error);
+    return {
+      data: null,
+      error: error.message || "Failed to update profile",
+    };
   }
 };
 

@@ -1,3 +1,5 @@
+"use client";
+
 import SubTitle from "@/components/SubTitle";
 import Link from "next/link";
 import { FaBuilding, FaUsers, FaIndustry } from "react-icons/fa";
@@ -12,12 +14,12 @@ const InfoRow = ({ icon: Icon, children, className = "" }) => (
 
 const LeadCard = ({ leads }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
       {leads.map((lead) => (
         <Link
           href={`/dashboard/leads/${lead.id}`}
           key={lead.id}
-          className="group bg-gradient-to-br from-neutral-50/40 from-10% to-neutral-100 rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all duration-300 "
+          className="group light-gradient rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all duration-300 "
         >
           <div className="p-3 space-y-2 ">
             <div className="*:group-hover:text-blue-600 *:duration-300 flex items-start space-x-2 border-b border-gray-200 pb-2">

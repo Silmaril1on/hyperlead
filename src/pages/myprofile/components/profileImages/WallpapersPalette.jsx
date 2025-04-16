@@ -7,7 +7,7 @@ import { AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "@/features/userSlice";
-import { updateProfile } from "@/lib/profileActions/profileActions";
+import { updateProfile } from "@/lib/actions/profileActions";
 import { setError } from "@/features/modalSlice";
 import { updateUserProfile } from "@/features/userSlice";
 import Paragraph from "@/components/Paragraph";

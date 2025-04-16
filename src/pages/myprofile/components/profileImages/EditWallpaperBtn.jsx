@@ -7,9 +7,9 @@ const EditWallpaperBtn = ({ setIsModalOpen }) => {
     <FlexBox
       onClick={() => setIsModalOpen(true)}
       type="row-1"
-      className="bg-blue-700 h-10 absolute right-3 top-3 md:top-auto md:bottom-3 rounded-sm px-2 py-1 text-white cursor-pointer hover:bg-blue-800 transition-all"
+      className="bg-blue-700 text-sm absolute right-3 top-3 md:top-auto md:bottom-3 rounded-sm px-2 py-1 text-white cursor-pointer hover:bg-blue-800 transition-all"
     >
-      <IoCameraOutline size={25} />
+      <IoCameraOutline size={20} />
       <span>Edit</span>
     </FlexBox>
   );

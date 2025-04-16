@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import {
   fadeIn,
+  infinityScroll,
   slideBottom,
   slideLeft,
   slideTop,
@@ -21,6 +22,8 @@ const MotionContainer = ({ children, className, animation, type }) => {
         return slideBottom;
       case "top":
         return slideTop;
+      case "infinity-scroll":
+        return infinityScroll;
       default:
         return fadeIn;
     }

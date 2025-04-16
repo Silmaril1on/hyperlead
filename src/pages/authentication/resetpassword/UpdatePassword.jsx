@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setError } from "@/features/modalSlice";
-import { updatePassword } from "@/lib/authActions/authActions";
+import { updatePassword } from "@/lib/actions/authActions";
 import { useRouter } from "next/navigation";
 import { validatePassword } from "@/helpers/validatePwd";
 import ResetError from "./ResetError";

@@ -1,5 +1,5 @@
 import supabase from "../config/supabaseClient";
-import handleAuthError from "./handleAuthErrors";
+import handleAuthError from "../../helpers/handleAuthErrors";
 
 const createOrUpdateProfile = async (user, profile = {}) => {
   try {

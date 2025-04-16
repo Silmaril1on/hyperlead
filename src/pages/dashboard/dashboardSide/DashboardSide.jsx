@@ -5,7 +5,7 @@ import FlexBox from "@/components/containers/FlexBox";
 
 const DashboardSide = () => {
   return (
-    <div className="w-full md:w-[20%] relative flex flex-col space-y-6 p-6">
+    <div className="w-full md:w-[30%] lg:w-[20%] relative flex flex-col md:space-y-6 p-6">
       <GradientContainer />
       <FlexBox type="column-start">
         <Title>HyperLead</Title>

@@ -1,10 +1,10 @@
 import Title from "@/components/Title";
 import SignInForm from "./SignInForm";
 import Paragraph from "@/components/Paragraph";
-import LinkComponent from "@/components/buttons/LinkComponent";
 import FormContainer from "@/components/containers/FormContainer";
 import MotionContainer from "@/components/containers/MotionContainer";
 import FlexBox from "@/components/containers/FlexBox";
+import Link from "next/link";
 
 const SignInComponent = () => {
   return (
@@ -17,9 +17,9 @@ const SignInComponent = () => {
           <SignInForm />
           <FlexBox type="row">
             <Paragraph>Don't have an account? </Paragraph>
-            <LinkComponent type="blue" href="/signup">
+            <Link className="text-blue-500 hover:underline" href="/signup">
               Sign Up
-            </LinkComponent>
+            </Link>
           </FlexBox>
         </FormContainer>
       </div>

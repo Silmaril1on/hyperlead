@@ -4,7 +4,6 @@ import { zoomOut } from "@/animationValues/motionVariants";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setError } from "@/features/modalSlice";
-import LinkComponent from "./buttons/LinkComponent";
 import { IoIosArrowForward } from "react-icons/io";
 import Link from "next/link";
 
@@ -19,11 +18,9 @@ const ErrorMsg = () => {
 
   useEffect(() => {
     if (!error || isHovered) return;
-
     const timer = setTimeout(() => {
       dispatch(setError({ message: "", type: "", link: "", title: "" }));
     }, 5000);
-
     return () => clearTimeout(timer);
   }, [error, isHovered]);
 
@@ -46,13 +43,13 @@ const ErrorMsg = () => {
             type === "success"
               ? "bg-green-100 border border-green-400 text-green-700"
               : "bg-red-100 border-2 border-red-400 text-red-700"
-          } px-4 md:px-8 fixed z-20 bottom-5 right-5 py-3 font-semibold flex flex-col space-y-2`}
+          } px-4 md:px-8 fixed z-20 bottom-5 right-5 py-3 font-semibold flex flex-col items-center `}
         >
           <h1>{error}</h1>
           {link && (
             <Link
               onClick={handleClose}
-              className="center border w-fit px-3 bg-red-600 text-white font-medium capitalize py-1 hover:bg-red-700 duration-300"
+              className="center mt-2 w-fit px-3 bg-red-600 text-white font-medium capitalize py-1 hover:bg-red-700 duration-300"
               href={link}
             >
               <span>{title}</span>

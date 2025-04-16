@@ -5,6 +5,7 @@ import SectionOne from "./sectionOne/SectionOne";
 import SectionPricing from "./sectionPricing/SectionPricing";
 import SectionThree from "./sectionThree/SectionThree";
 import SectionTwo from "./sectionTwo/SectionTwo";
+import FeedbackSlider from "./userFeedbacks/FeedbackSlider";
 
 const HomePage = () => {
   return (
@@ -13,6 +14,7 @@ const HomePage = () => {
       <LogoSlider />
       <SectionTwo />
       <SectionThree />
+      <FeedbackSlider />
       <SectionPricing />
       <SectionFaq />
       <SectionGlobe />

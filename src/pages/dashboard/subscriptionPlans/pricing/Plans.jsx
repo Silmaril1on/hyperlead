@@ -1,22 +1,17 @@
-"use client";
-import LeadCard from "./LeadCard";
-import Headline from "@/components/Headline";
 import FlexBox from "@/components/containers/FlexBox";
 import MotionContainer from "@/components/containers/MotionContainer";
+import Headline from "@/components/Headline";
+import Card from "./Card";
 
-const Leads = ({ data, message }) => {
-  if (!data) {
-    return <h1>{message}</h1>;
-  }
-
+const Plans = () => {
   return (
     <FlexBox type="column-start" className="p-3 space-y-5">
       <MotionContainer animation="zoom-out">
-        <Headline>Leads</Headline>
+        <Headline>Choose Your Plan</Headline>
       </MotionContainer>
-      <LeadCard leads={data} />
+      <Card />
     </FlexBox>
   );
 };
 
-export default Leads;
+export default Plans;

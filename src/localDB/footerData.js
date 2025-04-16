@@ -12,8 +12,8 @@ const footerData = [
         link: "/",
       },
       {
-        title: "discord",
-        link: "/",
+        title: "feedback",
+        link: "/feedback",
       },
     ],
   },

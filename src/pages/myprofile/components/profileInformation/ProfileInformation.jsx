@@ -6,7 +6,6 @@ const ProfileInformation = ({ profile }) => {
   return (
     <FlexBox type="column" className="mt-20 space-y-3 w-full mb-3">
       <ProfileHeader profile={profile} />
-
       <ProfileDetails profile={profile} />
     </FlexBox>
   );

@@ -2,7 +2,7 @@
 import { useState } from "react";
 import MotionContainer from "@/components/containers/MotionContainer";
 import { useRouter } from "next/navigation";
-import { updateProfile } from "@/lib/profileActions/profileActions";
+import { updateProfile } from "@/lib/actions/profileActions";
 import { useSelector } from "react-redux";
 import { selectUser, updateUserProfile } from "@/features/userSlice";
 import { setError } from "@/features/modalSlice";
@@ -15,14 +15,17 @@ import PrefList from "./PrefList";
 const preferencesData = [
   "marketing & advertising",
   "real estate",
+  "coaching & consulting",
   "retail",
-  "design",
-  "hr",
-  "finance",
-  "legal",
-  "customer success",
-  "product",
-  "other",
+  "E-Commerce",
+  "Health, Wellness & Fitness",
+  "hospitality",
+  "Construction",
+  "Financial Services",
+  "Information Technology",
+  "legals services",
+  "manufacturing",
+  "logistics",
 ];
 
 const PreferencesForm = ({ initialPreferences = [] }) => {
@@ -33,8 +36,8 @@ const PreferencesForm = ({ initialPreferences = [] }) => {
   const [pref, setPref] = useState(initialPreferences);
 
   const updatePref = async () => {
-    if (pref.length !== 3) {
-      dispatch(setError("Please select exactly 3 preferences"));
+    if (pref.length == 0) {
+      dispatch(setError("Please select at least one preference"));
       return;
     }
     setLoading(true);
