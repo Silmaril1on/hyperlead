@@ -15,17 +15,11 @@ import PrefList from "./PrefList";
 const preferencesData = [
   "marketing & advertising",
   "real estate",
-  "coaching & consulting",
-  "retail",
-  "E-Commerce",
-  "Health, Wellness & Fitness",
+  "coach & consulting",
   "hospitality",
-  "Construction",
-  "Financial Services",
-  "Information Technology",
-  "legals services",
-  "manufacturing",
-  "logistics",
+  "e-commerce",
+  "wellness & fitness",
+  "information technology & services",
 ];
 
 const PreferencesForm = ({ initialPreferences = [] }) => {
@@ -36,25 +30,35 @@ const PreferencesForm = ({ initialPreferences = [] }) => {
   const [pref, setPref] = useState(initialPreferences);
 
   const updatePref = async () => {
-    if (pref.length == 0) {
+    if (pref.length === 0) {
       dispatch(setError("Please select at least one preference"));
       return;
     }
     setLoading(true);
     try {
-      const { error } = await updateProfile(user.id, {
+      const { data, error } = await updateProfile(user.id, {
         preferences: pref,
       });
       if (error) {
-        dispatch(
-          setError({ message: "You choose your preferences", type: "success" })
-        );
+        console.error("Update preferences error:", error);
+        dispatch(setError(error || "Failed to update preferences"));
         return;
       }
+      if (!data) {
+        dispatch(setError("No data returned from update"));
+        return;
+      }
+      dispatch(
+        setError({
+          message: "Preferences updated successfully",
+          type: "success",
+        })
+      );
       dispatch(updateUserProfile({ preferences: pref }));
       router.push("/");
     } catch (error) {
-      dispatch(setError("Failed to update preferences"));
+      console.error("Unexpected error in updatePref:", error);
+      dispatch(setError("An unexpected error occurred"));
     } finally {
       setLoading(false);
     }

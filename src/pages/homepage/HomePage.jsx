@@ -11,10 +11,10 @@ const HomePage = () => {
   return (
     <main className="center flex-col space-y-20">
       <SectionOne />
+      <FeedbackSlider />
       <LogoSlider />
       <SectionTwo />
       <SectionThree />
-      <FeedbackSlider />
       <SectionPricing />
       <SectionFaq />
       <SectionGlobe />

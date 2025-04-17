@@ -17,7 +17,6 @@ export const checkSubscriptionExpiration = async (userId) => {
     oneMonthLater.setMonth(oneMonthLater.getMonth() + 1);
     const expired = now > oneMonthLater;
     if (expired) {
-      // Reset subscription
       const { error: updateError } = await supabase
         .from("profiles")
         .update({
@@ -115,7 +114,7 @@ export const assignLeadsToUser = async (
       let query = supabase
         .from("leads")
         .select("id, industry")
-        .eq("industry", industry);
+        .contains("industry", [industry]);
 
       // Exclude previously received leads if any exist
       if (previouslyReceivedLeadIds.length > 0) {

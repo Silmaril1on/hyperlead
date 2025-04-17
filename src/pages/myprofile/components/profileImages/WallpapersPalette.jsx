@@ -7,7 +7,7 @@ import { AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "@/features/userSlice";
-import { updateProfile } from "@/lib/actions/profileActions";
+import { updateWallpaper } from "@/lib/actions/profileActions";
 import { setError } from "@/features/modalSlice";
 import { updateUserProfile } from "@/features/userSlice";
 import Paragraph from "@/components/Paragraph";
@@ -25,13 +25,13 @@ const WallpapersPalette = ({
     try {
       const wallpaperSrc =
         typeof wallpaper === "object" ? wallpaper.src : wallpaper;
-      const { error } = await updateProfile(user.id, {
-        wallpaper_url: wallpaperSrc,
-      });
-      if (error) {
-        dispatch(setError(error));
+      const { success, error } = await updateWallpaper(user.id, wallpaperSrc);
+
+      if (!success) {
+        dispatch(setError(error || "Failed to update wallpaper"));
         return;
       }
+
       setSelectedWallpaper(wallpaperSrc);
       dispatch(updateUserProfile({ wallpaper_url: wallpaperSrc }));
       dispatch(
@@ -68,7 +68,7 @@ const WallpapersPalette = ({
                 return (
                   <div
                     onClick={() => handleWallpaperSelect(item)}
-                    className="relative brightness-90 hover:brightness-100 duration-300 aspect-video rounded-lg overflow-hidden cursor-pointer"
+                    className="relative z-[5] brightness-90 hover:brightness-100 duration-300 aspect-video rounded-lg overflow-hidden cursor-pointer"
                     key={index}
                   >
                     <Image

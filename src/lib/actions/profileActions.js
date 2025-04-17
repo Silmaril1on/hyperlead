@@ -2,93 +2,78 @@ import supabase from "../config/supabaseClient";
 
 export const updateProfile = async (userId, updates) => {
   try {
-    if (!userId) {
-      throw new Error("User ID is required");
-    }
-    const { data: existingProfile, error: checkError } = await supabase
+    const { data: profileData, error: profileError } = await supabase
       .from("profiles")
-      .select()
-      .eq("id", userId)
-      .single();
-    if (checkError) {
-      throw new Error("Failed to verify user profile");
-    }
-    if (!existingProfile) {
-      throw new Error("User profile not found");
-    }
-    const { data, error } = await supabase
-      .from("profiles")
-      .update({
-        ...updates,
-        updated_at: new Date().toISOString(),
-      })
+      .update(updates)
       .eq("id", userId)
       .select()
       .single();
-    if (error) {
-      console.error("Profile update error:", error);
-      throw error;
-    }
-    if (updates.userName) {
+    if (profileError) throw profileError;
+    if (updates.userName || updates.phone) {
+      const authUpdates = {};
+      if (updates.userName) authUpdates.display_name = updates.userName;
+      if (updates.phone) authUpdates.phone = updates.phone;
       const { error: authError } = await supabase.auth.updateUser({
-        data: { userName: updates.userName },
+        data: authUpdates,
       });
-      if (authError) {
-        console.error("Auth update error:", authError);
-        throw authError;
-      }
+      if (authError) throw authError;
     }
-    return { data, error: null };
+    return { data: profileData, error: null };
   } catch (error) {
-    console.error("Update profile error:", error);
-    return {
-      data: null,
-      error: error.message || "Failed to update profile",
-    };
+    console.error("Error updating profile:", error);
+    return { data: null, error: error.message };
   }
 };
 
 export const uploadAvatar = async (userId, file) => {
   try {
-    if (!file.type.startsWith("image/")) {
-      throw new Error("Please upload an image file");
-    }
-    const MAX_FILE_SIZE = 1 * 1024 * 1024;
-    if (file.size > MAX_FILE_SIZE) {
-      throw new Error("File size must be less than 1MB");
+    const { data: existingProfile } = await supabase
+      .from("profiles")
+      .select("avatar_url")
+      .eq("id", userId)
+      .single();
+    if (existingProfile?.avatar_url) {
+      const oldPath = existingProfile.avatar_url.split("/").pop();
+      await supabase.storage.from("avatars").remove([`${userId}/${oldPath}`]);
     }
     const fileExt = file.name.split(".").pop();
-    const fileName = `${userId}-${Date.now()}.${fileExt}`;
-    const filePath = `${fileName}`;
-    const { data: oldFiles } = await supabase.storage.from("avatars").list("", {
-      limit: 1,
-      search: userId,
-    });
-    if (oldFiles?.length > 0) {
-      await supabase.storage.from("avatars").remove([oldFiles[0].name]);
-    }
-    const { error: uploadError } = await supabase.storage
+    const fileName = `${Date.now()}.${fileExt}`;
+    const filePath = `${userId}/${fileName}`;
+    const { data, error: uploadError } = await supabase.storage
       .from("avatars")
-      .upload(filePath, file);
+      .upload(filePath, file, {
+        cacheControl: "3600",
+        upsert: true,
+      });
     if (uploadError) throw uploadError;
     const {
       data: { publicUrl },
     } = supabase.storage.from("avatars").getPublicUrl(filePath);
-    const timestamp = Date.now();
-    const urlWithTimestamp = `${publicUrl}?v=${timestamp}`;
-    const { data, error: updateError } = await supabase
+    const { error: updateError } = await supabase
       .from("profiles")
-      .update({
-        avatar_url: urlWithTimestamp,
-        updated_at: new Date().toISOString(),
-      })
+      .update({ avatar_url: publicUrl })
+      .eq("id", userId);
+    if (updateError) throw updateError;
+    return { success: true, avatar_url: publicUrl };
+  } catch (error) {
+    console.error("Error uploading avatar:", error);
+    return { success: false, error: error.message };
+  }
+};
+
+export const updateWallpaper = async (userId, wallpaperUrl) => {
+  try {
+    const { data, error } = await supabase
+      .from("profiles")
+      .update({ wallpaper_url: wallpaperUrl })
       .eq("id", userId)
       .select()
       .single();
-    if (updateError) throw updateError;
-    return { success: true, avatar_url: urlWithTimestamp };
+
+    if (error) throw error;
+    return { success: true, data };
   } catch (error) {
-    console.error("Error uploading avatar:", error);
-    return { data: null, error: error.message };
+    console.error("Error updating wallpaper:", error);
+    return { success: false, error: error.message };
   }
 };

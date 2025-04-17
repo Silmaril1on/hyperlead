@@ -1,3 +1,4 @@
+import CardContainer from "@/components/containers/CardContainer";
 import IconContainer from "@/components/containers/IconContainer";
 import Paragraph from "@/components/Paragraph";
 import SubTitle from "@/components/SubTitle";
@@ -7,7 +8,7 @@ import { FaBriefcase, FaDollarSign, FaIndustry, FaUsers } from "react-icons/fa";
 
 const CompanyStats = ({ data }) => {
   return (
-    <div className="lead-container-style">
+    <CardContainer>
       <Title className="pb-3 border-b border-gray-200">Company Stats</Title>
       <div className="space-y-4 mt-4">
         <div className="flex items-center gap-3">
@@ -51,7 +52,7 @@ const CompanyStats = ({ data }) => {
           </div>
         </div>
       </div>
-    </div>
+    </CardContainer>
   );
 };
 

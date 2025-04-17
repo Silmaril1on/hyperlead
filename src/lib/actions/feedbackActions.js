@@ -5,7 +5,6 @@ export const submitFeedback = async (feedbackData) => {
     const {
       data: { user },
     } = await supabase.auth.getUser();
-
     if (!user) {
       throw new Error("User not authenticated");
     }
@@ -36,24 +35,33 @@ export const getFeedback = async () => {
         `
         *,
         profiles:user_id (
-        userName, 
+          id,
+          userName,
           email,
           avatar_url
         )
       `
       )
       .order("created_at", { ascending: false });
+
     if (error) throw error;
+
+    // Transform the data to flatten the profile information
     const transformedData = data.map((feedback) => ({
       ...feedback,
-      profiles: feedback.profiles || {
-        userName: "Anonymous User",
-        email: null,
-        avatar_url: null,
-      },
+      userName: feedback.profiles?.userName || "Anonymous User",
+      email: feedback.profiles?.email || null,
+      avatar_url: feedback.profiles?.avatar_url || null,
     }));
-    return { data: transformedData, error: null };
+
+    return {
+      data: transformedData || [],
+      error: null,
+    };
   } catch (error) {
-    return { data: null, error: error.message };
+    return {
+      data: [],
+      error: error.message,
+    };
   }
 };

@@ -2,20 +2,21 @@ import FlexBox from "@/components/containers/FlexBox";
 import Image from "next/image";
 
 const Author = ({ item }) => {
-  const { profiles } = item;
+  const { userName, email, avatar_url } = item;
   return (
     <div className="flex flex-col mt-4">
       <FlexBox type="row">
-        <Image
-          className="w-6 h-6 rounded-full"
-          src={profiles?.avatar_url}
-          alt="avatar"
-          width={50}
-          height={50}
-        />
-        <span className="capitalize">{profiles.userName}</span>
+        <div className="relative w-6 h-6 rounded-full overflow-hidden">
+          <Image
+            src={avatar_url || "/assets/noPhoto.jpg"}
+            alt="avatar"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <span className="capitalize ml-2">{userName}</span>
       </FlexBox>
-      <span className="text-[12px] italic">{profiles.email}</span>
+      <span className="text-[12px] italic mt-1">{email}</span>
     </div>
   );
 };

@@ -2,12 +2,11 @@ import FlexBox from "@/components/containers/FlexBox";
 import { FaEnvelope, FaGlobe, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 import SocialLinks from "./SocialLinks";
 import Title from "@/components/Title";
+import CardContainer from "@/components/containers/CardContainer";
 const LeadCompanyInfo = ({ data }) => {
   const { company_address, website, email, company_phone } = data;
   return (
-    <div
-      className={`lead-container-style flex items-start flex-col space-y-6 [&_span]:text-[13px] [&_a]:text-[13px] [&_a]:hover:underline [&_svg]:text-blue-500`}
-    >
+    <CardContainer className=" flex items-start flex-col space-y-6 [&_span]:text-[13px] [&_a]:text-[13px] [&_a]:hover:underline [&_svg]:text-blue-500">
       <FlexBox type="column-start" className="w-full">
         <Title className="border-b pb-1 border-gray-200 w-full">
           Company Information
@@ -34,7 +33,7 @@ const LeadCompanyInfo = ({ data }) => {
         </div>
       </FlexBox>
       <SocialLinks data={data} />
-    </div>
+    </CardContainer>
   );
 };
 

@@ -29,10 +29,37 @@ const ProfileSettings = ({ isOpen, handleActive }) => {
         handleActive();
       }
     } catch (error) {
-      console.error("Error signing out:", error);
       dispatch(setError("Failed to sign out. Please try again."));
     }
   };
+
+  const links = [
+    {
+      name: "My profile",
+      href: "/myprofile",
+      icon: <FaUser />,
+      type: "link",
+    },
+    {
+      name: "Dashboard",
+      icon: <MdDashboard />,
+      href: "/dashboard/activities",
+      type: "link",
+    },
+    {
+      name: "Preferences",
+      href: "/preferences",
+      icon: <MdBusinessCenter />,
+      type: "link",
+    },
+    {
+      name: "Logout",
+      href: "/",
+      icon: <IoIosLogOut />,
+      type: "light",
+      isLogout: true,
+    },
+  ];
 
   return (
     <AnimatePresence>
@@ -41,30 +68,19 @@ const ProfileSettings = ({ isOpen, handleActive }) => {
           animation="bottom"
           className="absolute z-10 top-12 right-0 w-44 primary-border space-y-1 bg-white border shadow *:flex *:justify-end"
         >
-          <MotionChildren animation="fade-in" onClick={handleActive}>
-            <Button href="/myprofile">
-              <span>My profile</span>
-              <FaUser />
-            </Button>
-          </MotionChildren>
-          <MotionChildren animation="fade-in" onClick={handleActive}>
-            <Button href="/dashboard/activities">
-              <span>dashboard</span>
-              <MdDashboard />
-            </Button>
-          </MotionChildren>
-          <MotionChildren animation="fade-in" onClick={handleActive}>
-            <Button href="/preferences">
-              <span>Preferences</span>
-              <MdBusinessCenter />
-            </Button>
-          </MotionChildren>
-          <MotionChildren animation="fade-in">
-            <Button onClick={handleSignOut} type="light">
-              <IoIosLogOut />
-              <span>logout</span>
-            </Button>
-          </MotionChildren>
+          {links.map((item, index) => {
+            const onClick = item.isLogout
+              ? handleSignOut
+              : () => handleActive && handleActive();
+            return (
+              <MotionChildren key={index} animation="fade-in">
+                <Button onClick={onClick} type={item.type} href={item.href}>
+                  <span>{item.name}</span>
+                  {item.icon}
+                </Button>
+              </MotionChildren>
+            );
+          })}
         </MotionContainer>
       )}
     </AnimatePresence>

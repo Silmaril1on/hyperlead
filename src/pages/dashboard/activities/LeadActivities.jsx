@@ -1,3 +1,4 @@
+import CardContainer from "@/components/containers/CardContainer";
 import IconContainer from "@/components/containers/IconContainer";
 import MotionChildren from "@/components/containers/MotionChildren";
 import MotionContainer from "@/components/containers/MotionContainer";
@@ -40,22 +41,22 @@ const LeadActivities = ({ data }) => {
       className="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full mt-2"
     >
       {activities.map((activity, index) => (
-        <MotionChildren
-          key={index}
-          animation="fade-in"
-          className="lead-container-style space-y-1 capitalize"
-        >
-          <IconContainer size="sm" className="text-xl">
-            {activity.icon}
-          </IconContainer>
-          <div>
-            <SubTitle>{activity.title}</SubTitle>
-            <Title
-              className={`text-blue-600 font-thin ${activity.className || ""}`}
-            >
-              {activity.value}
-            </Title>
-          </div>
+        <MotionChildren key={index} animation="fade-in">
+          <CardContainer className="space-y-1 capitalize">
+            <IconContainer size="sm" className="text-xl">
+              {activity.icon}
+            </IconContainer>
+            <div>
+              <SubTitle>{activity.title}</SubTitle>
+              <Title
+                className={`text-blue-600 font-thin ${
+                  activity.className || ""
+                }`}
+              >
+                {activity.value}
+              </Title>
+            </div>
+          </CardContainer>
         </MotionChildren>
       ))}
     </MotionContainer>

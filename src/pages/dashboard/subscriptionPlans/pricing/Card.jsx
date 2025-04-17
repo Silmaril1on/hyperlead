@@ -38,7 +38,7 @@ const Card = () => {
         );
         return;
       }
-      const monthlyLeads = plan === "basic" ? 2 : 4;
+      const monthlyLeads = plan === "basic" ? 20 : 40;
       const {
         success,
         error: leadError,

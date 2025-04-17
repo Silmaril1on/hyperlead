@@ -1,3 +1,4 @@
+import CardContainer from "@/components/containers/CardContainer";
 import FlexBox from "@/components/containers/FlexBox";
 import IconContainer from "@/components/containers/IconContainer";
 import SubTitle from "@/components/SubTitle";
@@ -6,7 +7,7 @@ import { FaEnvelope, FaLinkedin, FaPhone, FaUserTie } from "react-icons/fa";
 
 const PersonContact = ({ data }) => {
   return (
-    <div className="lead-container-style">
+    <CardContainer>
       <Title className="pb-3 border-b border-gray-200">Primary Contact</Title>
       <div className="space-y-4 mt-4">
         <FlexBox type="row-2">
@@ -23,12 +24,14 @@ const PersonContact = ({ data }) => {
           </div>
         </FlexBox>
         <div className="space-y-2 text-[14px] [&_svg]:text-blue-600">
-          <div className="flex items-center gap-3 text-gray-700">
-            <FaEnvelope />
-            <a className="hover:underline" href={`mailto:${data.email}`}>
-              {data.email}
-            </a>
-          </div>
+          {data.email && (
+            <div className="flex items-center gap-3 text-gray-700">
+              <FaEnvelope />
+              <a className="hover:underline" href={`mailto:${data.email}`}>
+                {data.email}
+              </a>
+            </div>
+          )}
           <div className="flex items-center gap-3 text-gray-700">
             <FaPhone />
             <span>{data.corporate_phone}</span>
@@ -48,7 +51,7 @@ const PersonContact = ({ data }) => {
           )}
         </div>
       </div>
-    </div>
+    </CardContainer>
   );
 };
 

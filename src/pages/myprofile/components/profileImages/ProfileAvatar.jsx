@@ -1,20 +1,22 @@
 import Image from "next/image";
 import Spinner from "@/components/Spinner";
 import { IoCameraOutline } from "react-icons/io5";
-import { useState, useCallback, memo, useEffect } from "react";
+import { useState, useCallback, memo, useEffect, useRef } from "react";
 import { setError } from "@/features/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUserProfile } from "@/features/userSlice";
 import { selectUser } from "@/features/userSlice";
 import { uploadAvatar } from "@/lib/actions/profileActions";
 
+const UPLOAD_TIMEOUT = 30000;
+
 const ProfileAvatar = memo(({ profile: initialProfile, userId }) => {
   const dispatch = useDispatch();
   const [uploading, setUploading] = useState(false);
   const [localProfile, setLocalProfile] = useState(initialProfile);
   const user = useSelector(selectUser);
+  const uploadTimeoutRef = useRef(null);
 
-  // Update local profile when Redux state changes
   useEffect(() => {
     if (user?.profile?.avatar_url) {
       setLocalProfile((prev) => ({
@@ -24,15 +26,30 @@ const ProfileAvatar = memo(({ profile: initialProfile, userId }) => {
     }
   }, [user?.profile?.avatar_url]);
 
+  useEffect(() => {
+    return () => {
+      if (uploadTimeoutRef.current) {
+        clearTimeout(uploadTimeoutRef.current);
+      }
+    };
+  }, []);
+
   const handleAvatarChange = useCallback(
     async (e) => {
       try {
         const file = e.target.files?.[0];
         if (!file) return;
         setUploading(true);
-        const { avatar_url, error } = await uploadAvatar(userId, file);
-        if (error) {
-          dispatch(setError(error));
+        uploadTimeoutRef.current = setTimeout(() => {
+          setUploading(false);
+          dispatch(setError("Upload timed out. Please try again."));
+        }, UPLOAD_TIMEOUT);
+        const { success, avatar_url, error } = await uploadAvatar(userId, file);
+        if (uploadTimeoutRef.current) {
+          clearTimeout(uploadTimeoutRef.current);
+        }
+        if (!success || error) {
+          dispatch(setError(error || "Failed to upload avatar"));
           return;
         }
         dispatch(updateUserProfile({ avatar_url }));

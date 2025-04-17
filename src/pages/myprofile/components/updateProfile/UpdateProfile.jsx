@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser, updateUserProfile } from "@/features/userSlice";
 import { setError } from "@/features/modalSlice";
-import { useRouter } from "next/navigation";
 import { updateProfile } from "@/lib/actions/profileActions";
 import Button from "@/components/buttons/Button";
 import FormContainer from "@/components/containers/FormContainer";
@@ -15,7 +14,6 @@ import MotionContainer from "@/components/containers/MotionContainer";
 const UpdateProfile = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
-  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     userName: "",

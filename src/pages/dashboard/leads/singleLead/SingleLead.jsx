@@ -4,8 +4,6 @@ import PersonContact from "./leadComponents/PersonContact";
 import CompanyStats from "./leadComponents/CompanyStats";
 
 const SingleLead = ({ data }) => {
-  console.log(data);
-
   return (
     <div className="max-w-7xl mx-auto p-4 grid gap-4">
       <LeadHeader data={data} />

@@ -5,7 +5,7 @@ const PrefList = ({ data, pref, setPref }) => {
   const togglePreference = (preference) => {
     if (pref.includes(preference)) {
       setPref(pref.filter((p) => p !== preference));
-    } else if (pref.length < 3) {
+    } else {
       setPref([...pref, preference]);
     }
   };
@@ -21,7 +21,6 @@ const PrefList = ({ data, pref, setPref }) => {
           type={pref.includes(preference) ? "blue" : ""}
           className="capitalize center"
           onClick={() => togglePreference(preference)}
-          disabled={!pref.includes(preference) && pref.length >= 3}
         >
           {preference}
         </Button>

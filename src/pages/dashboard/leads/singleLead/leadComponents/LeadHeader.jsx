@@ -1,4 +1,4 @@
-import FlexBox from "@/components/containers/FlexBox";
+import CardContainer from "@/components/containers/CardContainer";
 import IconContainer from "@/components/containers/IconContainer";
 import SpanContainer from "@/components/containers/SpanContainer";
 import Paragraph from "@/components/Paragraph";
@@ -8,7 +8,7 @@ import { FaBuilding } from "react-icons/fa";
 
 const LeadHeader = ({ data }) => {
   return (
-    <FlexBox type="row-3" className="lead-container-style">
+    <CardContainer className=" flex space-x-2">
       <div>
         <IconContainer>
           <FaBuilding size={24} />
@@ -16,12 +16,12 @@ const LeadHeader = ({ data }) => {
       </div>
       <div className="space-y-1">
         <Title>{data.company_title}</Title>
-        <SpanContainer className="w-fit pointer-events-none">
+        <SpanContainer color="blue" className="w-fit pointer-events-none">
           {data.industry}
         </SpanContainer>
         <Paragraph>{data.seo_description}</Paragraph>
       </div>
-    </FlexBox>
+    </CardContainer>
   );
 };
 
