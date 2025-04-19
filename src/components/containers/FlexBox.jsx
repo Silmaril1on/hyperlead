@@ -1,44 +1,49 @@
 const FlexBox = ({ children, className, type, onClick }) => {
   const getLayout = (animation) => {
     switch (animation) {
+      //row layouts
       case "row":
-        return "flex space-x-1 items-center";
-      case "row-2":
-        return "flex space-x-2 items-center";
-      case "row-3":
-        return "flex space-x-3 items-center";
-      case "row-5":
-        return "flex space-x-5 items-center";
-      case "row-end":
-        return "flex space-x-1 justify-end items-center";
-      case "row-start":
-        return "flex space-x-1 justify-start items-center";
-      case "row-start-2":
-        return "flex space-x-2 justify-start items-center";
+        return "flex";
       case "row-center":
-        return "flex space-x-1 justify-center items-center";
+        return "flex justify-center";
       case "row-between":
-        return "flex justify-between items-center";
+        return "flex justify-between";
+      case "row-evenly":
+        return "flex justify-evenly";
+      case "row-around":
+        return "flex justify-around";
+      case "row-center-end":
+        return "flex justify-around items-end";
+      case "row-around-end":
+        return "flex justify-around items-end";
+      case "row-between-end":
+        return "flex justify-between items-end";
+      case "row-evenly-end":
+        return "flex justify-evenly items-end";
+      //column layouts
       case "column":
-        return "flex flex-col items-center";
-      case "column-1":
-        return "flex flex-col space-y-1 items-center";
-      case "column-2":
-        return "flex flex-col space-y-2 items-center";
-      case "column-3":
-        return "flex flex-col space-y-3 items-center";
-      case "column-5":
-        return "flex flex-col space-y-5 items-center";
-      case "column-10":
-        return "flex flex-col space-y-10 items-center";
+        return "flex flex-col";
       case "column-center":
-        return "flex flex-col space-y-2 items-center justify-center";
-      case "column-start":
-        return "flex flex-col items-start space-y-2";
-      case "column-end":
-        return "flex flex-col items-end space-y-2";
+        return "flex flex-col justify-center";
+      case "column-between":
+        return "flex flex-col justify-between";
+      case "column-evenly":
+        return "flex flex-col justify-evenly";
+      case "column-around":
+        return "flex flex-col justify-around";
+      case "column-center-end":
+        return "flex flex-col justify-center items-end";
+      case "column-around-end":
+        return "flex flex-col justify-around items-end";
+      case "column-between-end":
+        return "flex flex-col justify-between items-end";
+      case "column-evenly-end":
+        return "flex flex-col justify-evenly items-end";
+      //center column layouts
+      case "center-col":
+        return "flex flex-col items-center justify-center";
       default:
-        return "flex space-x-1 items-center justify-center";
+        return "flex items-center justify-center";
     }
   };
 

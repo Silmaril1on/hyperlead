@@ -5,7 +5,7 @@ import CompanyStats from "./leadComponents/CompanyStats";
 
 const SingleLead = ({ data }) => {
   return (
-    <div className="max-w-7xl mx-auto p-4 grid gap-4">
+    <div className="max-w-7xl mx-auto p-4 grid gap-4 ">
       <LeadHeader data={data} />
       <div className=" grid gap-4">
         <LeadCompanyInfo data={data} />

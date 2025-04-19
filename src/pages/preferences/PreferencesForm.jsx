@@ -11,16 +11,7 @@ import Header from "./Header";
 import Logo from "@/components/Logo";
 import ButtonSection from "./ButtonSection";
 import PrefList from "./PrefList";
-
-const preferencesData = [
-  "marketing & advertising",
-  "real estate",
-  "coach & consulting",
-  "hospitality",
-  "e-commerce",
-  "wellness & fitness",
-  "information technology & services",
-];
+import preferencesData from "@/localDB/preferencesData";
 
 const PreferencesForm = ({ initialPreferences = [] }) => {
   const router = useRouter();

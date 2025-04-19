@@ -6,9 +6,9 @@ import FlexBox from "@/components/containers/FlexBox";
 
 const Activities = ({ profile }) => {
   return (
-    <FlexBox type="column-start" className="p-4 h-screen">
-      <MotionContainer animation="zoom-out">
-        <Headline>Dashboard</Headline>
+    <FlexBox type="column" className="p-4 h-screen">
+      <MotionContainer animation="fade-in">
+        <Headline className="w-fit">Dashboard</Headline>
       </MotionContainer>
       <LeadActivities data={profile} />
     </FlexBox>

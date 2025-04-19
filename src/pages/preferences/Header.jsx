@@ -6,9 +6,11 @@ import Title from "@/components/Title";
 const Header = () => {
   return (
     <MotionChildren animation="fade-in">
-      <FlexBox type="column">
+      <FlexBox type="center-col">
         <Title>Select Your Preferences</Title>
-        <Paragraph>Choose 3 areas that interest you most</Paragraph>
+        <Paragraph>
+          Choose any preferences that best match your industry focus
+        </Paragraph>
       </FlexBox>
     </MotionChildren>
   );
